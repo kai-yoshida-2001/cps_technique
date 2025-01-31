@@ -71,6 +71,10 @@ global：PC全体・どのディレクトリにおいても有効なバージョ
 local：特定のディレクトリ下（上記手順では'test'）でのみ有効なバージョンを指定できる
 
 ### 3.install手順(Ubuntu.ver)
+XXX
 
 ### reference
 - https://qiita.com/t_aks/items/70e23807c1ffd747bf24
+
+### 最終更新日
+2025/01/31(金)13:40
