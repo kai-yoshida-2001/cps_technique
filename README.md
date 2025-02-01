@@ -1,6 +1,28 @@
 # cps_technique
 ## branch:mac_setup
 
+### 1.事前インストール
+#### 1.1 Homebrewのインストール
+
+~~~
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+~~~
+~~~
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zshrc
+eval $(/opt/homebrew/bin/brew shellenv)
+~~~
+
+~~~
+brew -V
+brew install git
+~~~
+
+~~~
+git clone -b mac_setup github:kai-yoshida-2001/cps_technique.git
+cd cps_technique
+./command.sh
+~~~
+
 ### 1.CPS流のMBAセットアップ手順
 #### 1.1初回起動時の設定
 - Language(言語)
@@ -65,7 +87,9 @@
   
 #### 1.2各ソフトウェアの設定
 起動後の画面と現役の先輩が使用しているMBAの画面は大きく異なる．
-System Settings(システム環境設定)のUIにおいても大きくことなっているため，一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．なお，アップデートにはそれなりの時間がかかるため，アップデート中の時間でレクリエーションでもやるとよろし．(30分以上はかかるでしょうしね)
+System Settings(システム環境設定)のUIにも大きくことなっているため，一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．なお，アップデートにはそれなりの時間がかかる．
+
+＊記録時点での最新OSは，macOS Sequoia Version 15.3
 
 ##### 1.2.1 System Setting(システム環境設定)
 - Trackpad Settings(トラックパッドの設定)
@@ -176,7 +200,7 @@ System Settings(システム環境設定)のUIにおいても大きくことな�
 
 - Dock Settings(Dockの設定)
   - Search -> Dock -> Desktop & Dock
-  - Size: 'Small'よりに約10％くらいの大きさ
+  - Size: 'Small'寄りに約10％くらいの大きさ
   - Magnification: OFF
   - Position on screen: Left
   - Minimize windows using: Genie Effect
@@ -192,14 +216,77 @@ System Settings(システム環境設定)のUIにおいても大きくことな�
 	- Stage Manager: OFF
 	- Show recent apps in Stage Manager: ON
 	- Show windows from an application: All at Once
+	
   - Widges:
-	- 
-  - 
+	- Show Widgets: On Desktop のみON
+	- Widget style: Automatic
+	- Use iPhone widgets: OFF
+	- Default web browser: Google Chrome.app ＊事前にChromeがインストールされている必要がある
+	- Prefer tabs when opening documents: In Full Screen
+	- Ask to keep changes when closing documents: ON
+	- Close windows when quitting an application: ON
+	- Drag windows to screen to screen edges to file: ON
+	- Drag windows to menu bar to fill screen: OFF
+	- Hold Option key while dragging windows to file: OFF
+	- Tiled windows have margins: ON
+
+  - Mission Control:
+	- Automatically rearrange Spaces bassed on most recent use: ON
+	- When switching to an application, switch to a Space with open windows for the application: ON
+	- Group windows by application: On
+	- Displays have separate Spaces: On
+	- Drag windows to top of screen to enter Mission Control: OFF
   
-  
-##### 1.2.2 Finder Settings
+##### 1.2.2 Terminal Settings(Terminal設定)
+- Terminal.appを起動
+  - 画面左上のバナーに表示されている'Terminal'(Appleマークの右隣)をクリック -> Settings... -> General
+	- On startup, open: New Window with profile にチェック -> Pro を選択
+	- Shells open with: Default login shell にチェック
+	- New windows open with: Default Profile & Default Working Directory
+	- New tabs open with: Same Profile & Same Working Directory
+	- Use 'Command'-'1'key through 'Command'-'9'key to switch tabs: ON
+	
+  - Profiles
+	- Basic -> Pro を選択し，画面下部にある'Default'をクリック
+	- Text:
+		- Background: 
+			- Color & Effects -> Opacity: 100%
+			- Color & Effects -> Blur: 0%
+			- Image: No Background Image
+		- Font:
+			- Change... -> All Fonts -> SF Mono -> Regular -> Fontsize: 16
+		- Text:
+			- Antialias text: ON
+			- 白色をクリック -> Opacity: 90%
+			- Use bold fonts: ON
+			- Allow blinking text: ON
+			- Display ANSI colors: ON
+		- ANSI Colors:
+			- Normal行にある青色をクリック -> 明るめの青色に調整し，Opacity: 100%
+		- Cursor:
+			- Block: ON
+			- Blink Cursor: ON
+	- Shell:
+		- Startup: Run commandはOFF
+		- When the shell exist: Close the window
+		- Ask beforre closing: 
+			- Only if there are processes other than the login shell and: ON
+				- screen, tmuxを追記
+				
+	- keyboard:
+		- Use Option as Meta key: ON
+		- Scroll alternate screen: OFF
+	
+	- Advanced:
+		- Bell: Audio bell: OFF
+
+- Terminalに色を付ける(./command.shで実行済のためスキップ)
+  - cp src/dot.zshrc ~/.zshrc
+  - source ~/.zshrc
+
+##### 1.2.3 Finder Settings(Finder設定)
 - Finder.appを起動
-  - 画面左上のバナーに表示されている'Finder'(Appleマークの右隣)をクリック -> Settings... -> General(一般)
+  - 画面左上のバナーに表示されている'Finder'(Appleマークの右隣)をクリック -> Settings... -> General
 	- Show these items on the desktop: -> External disks のみチェック
 	
 	- Finder windows show:アカウント名のフォルダに設定
@@ -208,8 +295,18 @@ System Settings(システム環境設定)のUIにおいても大きくことな�
 	- Appllications, Downloads, Home(アカウント名のフォルダ)：3つのみにチェック
 	＊頻繁にUSBメモリやSDカード等を使う場合には'Location'の中にある'External disks'にもチェックを入れておくと良い
 
-  -
+##### 1.2.4 mi Settings(mi設定)
+- mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
+  - 画面左上のバナーに表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
+  - Ruler and Line Number:
+	- Ruler -> Display Ruler: OFF
+	- Line Number -> Display Each Line Number -> OFF 
 	
+  -  画面左上のバナーに表示されている'mi'をクリック -> Application Preference -> General
+	 - Normal Font -> Select...
+		 - Font: Monaco, Size: 16pt
+	
+- 
 
 ### reference
 - https://docs.google.com/document/d/1643S_JMsHVVNLv68HBaF3Goanjzwg_A301Sueou6FA4/edit?usp=drive_link
