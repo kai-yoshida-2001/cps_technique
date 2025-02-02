@@ -1,8 +1,8 @@
 # cps_technique
 ## branch:mac_setup
 
-### 1.CPS流のMBAセットアップ手順
-#### 1.1初回起動時の設定
+## 1.CPS流のMBAセットアップ手順
+### 1.1初回起動時の設定
 - Language(言語)
   - English -> continue
   
@@ -12,7 +12,7 @@
 - Text and Voice input Languages(文字入力および音声入力の言語)
   - -> continue(続ける)
   
-n- Accessibility(アクセシビリティ)
+- Accessibility(アクセシビリティ)
   - -> Not now(今はしない)
   
 - Select Wi-Fi Network(Wi-Fiネットワークを選択)
@@ -27,6 +27,7 @@ n- Accessibility(アクセシビリティ)
   
 - Sign in with your Apple ID(Apple IDでサインイン)
   - IDとパスワードを使ってサインイン -> continue(続ける)
+  
   ＊ここで設定しない場合は'later'(あとで設定)
   
 - Terms of Use(利用規約)
@@ -39,10 +40,9 @@ n- Accessibility(アクセシビリティ)
   - ヒント：任意
   - アイコン画像：好きな画像を設定可 -> continue(続ける)
 
-＊アカウント名は後から変更できない．
-また，Terminalで表示されるアカウント名が長くなると
-カッコよくない(個人の感想)ので，
-短く設定しておくと良い．
+  ＊アカウント名は後から変更できない．
+  また，Terminalで表示されるアカウント名が長くなると
+  カッコよくない(個人の感想)ので，短く設定しておくと良い．
 	
 - Enable location information(位置情報サービスを有効にする)
   - チェックを入れる -> continue(続ける)
@@ -63,38 +63,29 @@ n- Accessibility(アクセシビリティ)
   - ライトかダークのどちらかを選択 -> continue(続ける)
   ＊おすすめはダーク．．．
   
-#### 1.2各ソフトウェアの設定
+### 1.2各ソフトウェアの設定
 起動後の画面と現役のCPSメンバーが使用しているMBAの画面は大きく異なる．
 System Settings(システム環境設定)のUIにも大きくことなっているため，一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．なお，アップデートにはそれなりの時間がかかる．
 
 ＊記録時点での最新OSは，macOS Sequoia Version 15.3
+<img width='470' src='./src/macos_version.png' alt='macOS Sequoia Version 15.3'>
 
-##### 1.2.1 System Setting(システム環境設定)
+#### 1.2.1 System Setting(システム環境設定)
 画面左上のバナーにあるAppleマーク -> Syetem Settings...
 - Trackpad Settings(トラックパッドの設定)
-  - Search -> Trackpad -> Point & Click 
+  - Search -> Trackpad -> Point & Click -> ON or OFF の設定部分は全てON
 	- Tracking speed: Fast(Max)
 	- Click: Medium
-	- Quate Click: ON
-	- Force Click and haptic feedback: ON
 	- Look up & data detectors: Force Click with One Finger
 	- Secondary click: Click Tap with Two Fingers
-	- Tap to click: ON
 	
-  - Trachpad -> Scroll & Zoom
-	- Natural scrolling: ON
-	- Zoom in or out: ON
-	- Smart zoom: ON
-	- Rotate: ON
+  - Trachpad -> Scroll & Zoom -> 全てON
 	
-  - More & Gestures
+  - Trackpad -> More & Gestures -> ON or OFF の設定部分は全てON
 	- Swipe between pages: Swipe with Two or Three Fingers
 	- Swipe between full-screen applications: Swipe Left or Right with Four Fingers
-	- Notification Center: ON
 	- Mission Control: Swipe Up with Fingers
 	- App Expose: Swipe Down with Three Fingers
-	- Launchpad: ON
-	- Show Desktop: ON
 
 - Keyboard Settings(キーボードの設定)
   - Search -> Keyboard
@@ -111,7 +102,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 		- Mission Control: 全てOFF
 		- Keyboard: 全てOFF
 		- Input Sources: Select next source in Input menu をON 
-		＊1.キー操作を'Command'と'i'に設定する．
+		＊1.キー操作を'Command'と'i'に設定する
 		＊2.上記に設定する前に'Modifier Keys'の変更をしておくことが望ましい
 		- Screenshots: 上から1つ目と3つ目，5つ目をON
 		- Presenter Overlay: 全てOFF
@@ -173,61 +164,64 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 - Accessibility Settings(アクセシビリティの設定)
   - Search -> Accessibility
   - Zoom: 以下項目以外はOFF
-	- Use scroll gesture with modifier keys to zoom: ON
+	- Use scroll gesture with modifier keys to zoom -> ON
   - Shortcut: 以下項目以外はOFF
-	- Zoom, Color Filters, Accessibility Keyboard: ON
+	- Zoom, Color Filters, Accessibility Keyboard -> ON
 
 - Dock Settings(Dockの設定)
   - Search -> Dock -> Desktop & Dock
-  - Size: 'Small'寄りに約10％くらいの大きさ
-  - Magnification: OFF
-  - Position on screen: Left
-  - Minimize windows using: Genie Effect
-  - Double-click a window's title bar to: Zoom
-  - Minimize windows into application icon: OFF
-  - Automatically hide and show the Dock: ON
-  - Animate opening applications: OFF
-  - Show indicators for open applications: ON
-  - Show suggested and recent apps in Dock: OFF
+  - Size -> 'Small'寄りに約10％くらいの大きさ
+  - Magnification -> OFF
+  - Position on screen -> Left
+  - Minimize windows using -> Genie Effect
+  - Double-click a window's title bar to -> Zoom
+  - Minimize windows into application icon -> OFF
+  - Automatically hide and show the Dock -> ON
+  - Animate opening applications -> OFF
+  - Show indicators for open applications -> ON
+  - Show suggested and recent apps in Dock -> OFF
   - Desktop & Stage Manager:
 	- Show Items: On DesktopのみON
-	- Click wallpaper to reveral desktop: Always
-	- Stage Manager: OFF
-	- Show recent apps in Stage Manager: ON
-	- Show windows from an application: All at Once
+	- Click wallpaper to reveral desktop -> Always
+	- Stage Manager -> OFF
+	- Show recent apps in Stage Manager -> ON
+	- Show windows from an application -> All at Once
 	
   - Widges:
-	- Show Widgets: On Desktop のみON
-	- Widget style: Automatic
-	- Use iPhone widgets: OFF
-	- Default web browser: Google Chrome.app ＊事前にChromeがインストールされている必要がある
-	- Prefer tabs when opening documents: In Full Screen
-	- Ask to keep changes when closing documents: ON
-	- Close windows when quitting an application: ON
-	- Drag windows to screen to screen edges to file: ON
-	- Drag windows to menu bar to fill screen: OFF
-	- Hold Option key while dragging windows to file: OFF
-	- Tiled windows have margins: ON
+	- Show Widgets -> On Desktop のみON
+	- Widget style -> Automatic
+	- Use iPhone widgets -> OFF
+	- Default web browser -> Google Chrome.app 
+	
+	＊事前にChromeがインストールされている必要がある
+	
+	- Prefer tabs when opening documents -> In Full Screen
+	- Ask to keep changes when closing documents -> ON
+	- Close windows when quitting an application -> ON
+	- Drag windows to screen to screen edges to file -> ON
+	- Drag windows to menu bar to fill screen -> OFF
+	- Hold Option key while dragging windows to file -> OFF
+	- Tiled windows have margins -> ON
 
   - Mission Control:
-	- Automatically rearrange Spaces bassed on most recent use: ON
-	- When switching to an application, switch to a Space with open windows for the application: ON
-	- Group windows by application: On
-	- Displays have separate Spaces: On
-	- Drag windows to top of screen to enter Mission Control: OFF
+	- Automatically rearrange Spaces bassed on most recent use -> ON
+	- When switching to an application, switch to a Space with open windows for the application -> ON
+	- Group windows by application -> ON
+	- Displays have separate Spaces -> ON
+	- Drag windows to top of screen to enter Mission Control -> OFF
 
 - Control Center Settings(Control Centerの設定)
   - Search -> Control Center
   - Control Center Modules:
-	- Wi-Fi: Show in Menu Bar
-	- Bluetooth: Show in Menu Bar
-	- AirDrop: Show in Menu Bar
-	- Focus: Don't Show in Menu Bar
-	- Stage Manager: Don't Show in Menu Bar
-	- Screen Mirroring: Show When Active
-	- Display: Don't Show in Menu Bar
-	- Sound: Show When Active
-	- Now Playing: Show When Active
+	- Wi-Fi -> Show in Menu Bar
+	- Bluetooth -> Show in Menu Bar
+	- AirDrop -> Show in Menu Bar
+	- Focus -> Don't Show in Menu Bar
+	- Stage Manager -> Don't Show in Menu Bar
+	- Screen Mirroring -> Show When Active
+	- Display -> Don't Show in Menu Bar
+	- Sound -> Show When Active
+	- Now Playing -> Show When Active
 	
   - Other Modules:
 	- Accessibility Shortcuts: 全てOFF
@@ -250,14 +244,14 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 	- Automatically hide and show the menu bar: Never
 	- Recent documents, applications, and servers: 10
 
-##### 1.2.2 Terminal Settings(Terminalの設定)
+#### 1.2.2 Terminal Settings(Terminalの設定)
 - Terminal.appを起動
   - 画面左上のバナーに表示されている'Terminal'(Appleマークの右隣)をクリック -> Settings... -> General
 	- On startup, open: New Window with profile にチェック -> Pro を選択
-	- Shells open with: Default login shell にチェック
-	- New windows open with: Default Profile & Default Working Directory
-	- New tabs open with: Same Profile & Same Working Directory
-	- Use 'Command'-'1'key through 'Command'-'9'key to switch tabs: ON
+	- Shells open with -> Default login shell にチェック
+	- New windows open with -> Default Profile & Default Working Directory
+	- New tabs open with -> Same Profile & Same Working Directory
+	- Use 'Command'-'1'key through 'Command'-'9'key to switch tabs -> ON
 	
   - Profiles
 	- Basic -> Pro を選択し，画面下部にある'Default'をクリック
@@ -269,67 +263,76 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 		- Font:
 			- Change... -> All Fonts -> SF Mono -> Regular -> Fontsize: 16
 		- Text:
-			- Antialias text: ON
+			- Antialias text -> ON
 			- 白色をクリック -> Opacity: 90%
-			- Use bold fonts: ON
-			- Allow blinking text: ON
-			- Display ANSI colors: ON
+			- Use bold fonts ->  ON
+			- Allow blinking text -> ON
+			- Display ANSI colors -> ON
 		- ANSI Colors:
 			- Normal行にある青色をクリック -> 明るめの青色に調整し，Opacity: 100%
 		- Cursor:
-			- Block: ON
-			- Blink Cursor: ON
+			- Block -> ON
+			- Blink Cursor -> ON
 	- Shell:
-		- Startup: Run commandはOFF
-		- When the shell exist: Close the window
+		- Startup -> Run commandはOFF
+		- When the shell exist -> Close the window
 		- Ask beforre closing: 
-			- Only if there are processes other than the login shell and: ON
+			- Only if there are processes other than the login shell and -> ON
 				- screen, tmuxを追記
 				
 	- keyboard:
-		- Use Option as Meta key: ON
-		- Scroll alternate screen: OFF
+		- Use Option as Meta key -> ON
+		- Scroll alternate screen -> OFF
 	
 	- Advanced:
-		- Bell: Audio bell: OFF
+		- Bell: Audio bell -> OFF
 
-#### 1.2.3 Homebrewをインストール
-LaunchpadかFinder内のApplications -> UtilitiesからTerminalを起動して，下記のコマンドを入力する．この際，DockにTerminalを追加しておくとよい．
+- Rosetta機能をOFF
+	- Finder -> Applications -> Utilities -> Terminal.appを2本指でタップ -> Gey Info -> 
+		- Open using Rosetta -> OFF
+
+#### 1.2.3 [Homebrew](https://brew.sh/)をインストール
+LaunchpadかFinder内のApplications -> Utilities -> Terminalを起動して，下記のコマンドを入力する．この際，DockにTerminalを追加しておくとよい．
 - Launchpad -> Other -> Terminal
 - Finder -> Applications -> Utilities -> Terminal
 
+- 下記のコマンドをコピーしてTerminalにペーストし，実行する
 ~~~
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ~~~
-インストール実行後に下記コマンドを入力し，実行する．
+
+- 次に下記コマンドをコピーしてTerminalにペーストし，実行する．
 ~~~
 echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
 eval $(/opt/homebrew/bin/brew shellenv)
 ~~~
-インストールしたHomebrewのバージョンを確認し，gitをインストールする．
+
+- インストールしたHomebrewのバージョンを確認し，gitをインストールする．
 ~~~
 brew -V
 brew install git
 ~~~
-本リポジトリをクローンし，コマンド操作を一括で終わらせる．
+
+- 本リポジトリをクローンし，コマンド操作を一括で終わらせる．
 ~~~
 git clone -b mac_setup github:kai-yoshida-2001/cps_technique.git
 cd cps_technique
 ./command.sh
 ~~~
 
-##### 1.2.3 Finder Settings(Finderの設定)
+#### 1.2.3 Finder Settings(Finderの設定)
 - Finder.appを起動
   - 画面左上のバナーに表示されている'Finder'(Appleマークの右隣)をクリック -> Settings... -> General
 	- Show these items on the desktop: -> External disks のみチェック
 	
-	- Finder windows show:アカウント名のフォルダに設定
+	- Finder windows show: アカウント名のフォルダに設定
 	
   - Sidebar(サイドバー)
 	- Appllications, Downloads, Home(アカウント名のフォルダ)：3つのみにチェック
+	
 	＊頻繁にUSBメモリやSDカード等を使う場合には'Location'の中にある'External disks'にもチェックを入れておくと良い
 
-##### 1.2.4 mi Settings(miの設定)
+#### 1.2.4 mi Settings(miの設定)
 - mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
   - 画面左上のバナーに表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
   - Ruler and Line Number:
@@ -375,17 +378,13 @@ GitHubとの連携や山口研が保有している仮想マシンへのSSH接�
 
 - GitHubにpubキーを設定
 ~~~
-pbcopy < .ssh/pub/NAME@ylab.pub
+pbcopy < .ssh/pub/*@ylab.pub
 ~~~
 
-GitHub:https://github.co.jp/ -> ログイン -> 画面右上のアイコンをクリックし，歯車マークの'settings'をクリック -> 画面右にある'Access'の'SSH and GPG keys'をクリック -> New SSH key 
+[GitHub](https://github.co.jp/) -> ログイン -> 画面右上のアイコンをクリックし，歯車マークの'settings'をクリック -> 画面右にある'Access'の'SSH and GPG keys'をクリック -> New SSH key 
 	- title: ylab
 	- key type: 変更なし
 	- key: クリップボードで保持している内容を貼り付け -> Add SSH key
-
-~~~
-cp ~/.ssh/pub/NAME@ylab.pub ~/.ssh/authorized_keys
-~~~
 
 ### reference
 - https://docs.google.com/document/d/1643S_JMsHVVNLv68HBaF3Goanjzwg_A301Sueou6FA4/edit?usp=drive_link
@@ -394,4 +393,4 @@ cp ~/.ssh/pub/NAME@ylab.pub ~/.ssh/authorized_keys
 
 
 ### 最終更新日
-2025/02/01(土) 18:30
+2025/02/02(日) 16:20
