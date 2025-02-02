@@ -255,7 +255,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 #### 1.2.2 Terminal Settings(Terminalの設定)
 - Terminal.appを起動
 
-<img width='200' src='./src/terminal_logo.png' alt='Terminalを起動する'>
+<img width='300' src='./src/terminal_logo.png' alt='Terminalを起動する'>
 
   - 画面左上のバナーに表示されている'Terminal'(Appleマークの右隣)をクリック -> Settings... -> General
 	- On startup, open: New Window with profile にチェック -> Pro を選択
@@ -347,7 +347,7 @@ cd cps_technique
 - mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
 
 
-<img width='200' src='./src/mi_logo.png' alt='miを起動'>
+<img width='300' src='./src/mi_logo.png' alt='miを起動'>
 
 
   - 画面左上のバナーに表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
