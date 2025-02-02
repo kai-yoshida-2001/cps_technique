@@ -68,10 +68,18 @@
 System Settings(システム環境設定)のUIにも大きくことなっているため，一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．なお，アップデートにはそれなりの時間がかかる．
 
 ＊記録時点での最新OSは，macOS Sequoia Version 15.3
+
+
 <img width='470' src='./src/macos_version.png' alt='macOS Sequoia Version 15.3'>
+
 
 #### 1.2.1 System Setting(システム環境設定)
 画面左上のバナーにあるAppleマーク -> Syetem Settings...
+
+
+<img width='200' src='./src/logo_to_settings.png' alt='Apple のロゴマークからシステム環境設定へ'>
+
+
 - Trackpad Settings(トラックパッドの設定)
   - Search -> Trackpad -> Point & Click -> ON or OFF の設定部分は全てON
 	- Tracking speed: Fast(Max)
@@ -246,6 +254,9 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 
 #### 1.2.2 Terminal Settings(Terminalの設定)
 - Terminal.appを起動
+
+<img width='200' src='./src/terminal_logo.png' alt='Terminalを起動する'>
+
   - 画面左上のバナーに表示されている'Terminal'(Appleマークの右隣)をクリック -> Settings... -> General
 	- On startup, open: New Window with profile にチェック -> Pro を選択
 	- Shells open with -> Default login shell にチェック
@@ -334,6 +345,11 @@ cd cps_technique
 
 #### 1.2.4 mi Settings(miの設定)
 - mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
+
+
+<img width='200' src='./src/mi_logo.png' alt='miを起動'>
+
+
   - 画面左上のバナーに表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
   - Ruler and Line Number:
 	- Ruler -> Display Ruler: OFF
