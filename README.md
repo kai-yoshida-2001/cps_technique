@@ -389,6 +389,29 @@ pbcopy < .ssh/pub/*@ylab.pub
 	- key type: 変更なし
 	- key: クリップボードで保持している内容を貼り付け -> Add SSH key
 
+#### 1.2.6 Microsoft Office(必要であれば)
+- CPS用のGoogleアカウントでDriveへログインし，検索バーで'Microsoft Office'と入力する．
+- 検索結果の'Microsoft Office'フォルダをクリック
+- フォルダ内にある4つのファイルを全てダウンロードする
+- MBAのDownloadsフォルダに入った4つのファイルのうち，'SWDVD5_Office_Mac_Serializer_2019_MLF_X21-88135.ISO'をダブルクリック
+- インストローラーを起動し'Installed for all users of this computer'を選択
+- 次に，Wordを起動して'Skip signing in to the Office cloud'を選択
+  - ＊この際，いくつかのステップで'Agree'を選択する必要がある
+- Wordの初回起動時に行った動作をExcel，PowerPointでも同様に実施する
+
+#### 1.2.7 特定のAppにおいて日本語表記を適用する
+- 画面左上にあるAppleマークから'System Settings'をクリック
+- System Settings -> General -> Language & Region -> Applications -> '+'マークをクリック -> ApplcationとLanguageをそれぞれ選択 -> Add
+  - ここでApplicationをWord，Languageを日本語 - Japaneseに設定することで，次回起動時から日本語表記が適用される
+  - 使用頻度が多いWord，Excel，PowerPoint，VScodeは上記設定をしておくと良いかも...
+  
+#### 1.2.8 Windows Appの設定
+仮想マシンの画面をMBA側で表示・操作できるようにするためのソフトウェア
+
+ここでは仮想マシンのIPアドレスやユーザ名，パスワード等を設定する
+
+XXXX：後ほど追記
+
 ### reference
 - https://docs.google.com/document/d/1643S_JMsHVVNLv68HBaF3Goanjzwg_A301Sueou6FA4/edit?usp=drive_link
 - https://github.com/tomo-cps/mac-setup
@@ -396,4 +419,4 @@ pbcopy < .ssh/pub/*@ylab.pub
 
 
 ### 最終更新日
-2025/02/02(日) 16:20
+2025/02/04(火) 11:55
