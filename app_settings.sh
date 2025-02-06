@@ -20,9 +20,13 @@ brew install \
 	 tree \
 	 tmux \
 	 yt-dlp \
+	 ffmpeg \
+	 imagemagick \
 	 pyenv \
 	 docker \
-	 ag
+	 ag \
+	 ansible \
+	 hudochenkov/sshpass/sshpass/sshpass
 
 # Terminalに色を付ける
 mv ./src/dot.zshrc ~/.zshrc

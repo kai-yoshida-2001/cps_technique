@@ -320,7 +320,7 @@ brew install git
 ~~~
 git clone -b mac_setup github:kai-yoshida-2001/cps_technique.git
 cd cps_technique
-./command.sh
+./app_settings.sh
 ~~~
 
 #### 1.2.3 Finder Settings(Finderの設定)
