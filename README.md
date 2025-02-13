@@ -317,11 +317,23 @@ brew install git
 ~~~
 
 - 本リポジトリをクローンし，コマンド操作を一括で終わらせる．
+＊CPSのアカウントでGoogle Driveへアクセスして，検索バーで'hhost.zip'を入力し，
+該当ファイルをダウンロードしておくこと
 ~~~
-git clone -b mac_setup github:kai-yoshida-2001/cps_technique.git
+git clone github:kai-yoshida-2001/cps_technique.git
 cd cps_technique
+git checkout mac_setup
 ./app_settings.sh
 ~~~
+
+- screenの設定
+~~~
+brew info screen # バージョン確認
+alias screen='/usr/local/Cellar/screen/5.0.0/bin/screen' >> ~/.zshrc
+~~~
+＊5.0.0は'screen'のバージョンを示しており，インストールのタイミング次第では
+上記コマンド表記では正常に動作しない可能性がある．
+なお，ver.5.0.0は2024/08/28にリリースされており，本リポジトリ制作のタイミング（2025/02/13）時点の最新版である．
 
 #### 1.2.3 Finder Settings(Finderの設定)
 - Finder.appを起動

@@ -13,29 +13,29 @@ brew install --cask \
 
 # CLIパッケージのインストール
 brew install \
-	 emacs \
-	 wget \
-	 pwgen \
-	 curl \
-	 tree \
-	 tmux \
-	 yt-dlp \
-	 ffmpeg \
-	 imagemagick \
-	 pyenv \
-	 docker \
-	 ag \
-	 ansible \
-	 hudochenkov/sshpass/sshpass/sshpass
+	emacs \
+	screen \
+	wget \
+	pwgen \
+	curl \
+	tree \
+	tmux \
+	yt-dlp \
+	ffmpeg \
+	imagemagick \
+	pyenv \
+	docker \
+	ag \
+	ansible \
+	hudochenkov/sshpass/sshpass/sshpass
 
 # Terminalに色を付ける
 mv ./src/dot.zshrc ~/.zshrc
 
 # emacsの設定
-unzip ./src/dot.emacs.d.zip
-mkdir -p ~/.emacs.d; cp -r dot.emacs.d/* ~/.emacs.d/
-brew install aspell --lang=en_US
-echo "lang en_US" > ~/.aspell.conf
+unzip ~/Downloads/hhost.zip
+cp ~/Downloads/hhost/resouce/init/dot.ssh/secret/mse_.emacs.d ~/.ssh/secret/
 
-# screenの設定
-cd; echo escape ^Tt > .screenrc
+git clone github:yamasound/.emacs.d
+cd .emacs.d; git checkout macos_11
+ln -s .emacs.d/misc/.screenrc ~/
