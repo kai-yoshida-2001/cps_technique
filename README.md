@@ -336,7 +336,17 @@ eval $(/opt/homebrew/bin/brew shellenv)
 - インストールしたHomebrewのバージョンを確認し，gitをインストールする．
 ~~~
 brew --version
-brew install git
+brew install git google-chrome
+~~~
+
+- Chromeを開き，CPSのアカウントでログインしたのちに山口研の掲示板を開く
+-> 山口研掲示板の'プログラム(個別配布フォルダとGitHubリポジトリ)'より，自分の名前と紐づけられたURLからフォルダへ行き，'key pair'フォルダをダウンロードする．その後，下記のコマンドを実行する．
+~~~
+# sshの設定
+unzip ~/Downloads/key\ pair-*.zip; mv key\ pair ~/.ssh
+cd; chmod 700 .ssh
+cd .ssh; chmod 600 config; chmod 700 secret; chmod 600 secret/*
+cp ~/.ssh/pub/*@ylab.pub ~/.ssh/authorized_keys
 ~~~
 
 - 本リポジトリをクローンし，コマンド操作を一括で終わらせる．
@@ -383,7 +393,7 @@ alias screen='/usr/local/Cellar/screen/5.0.0/bin/screen' >> ~/.zshrc
 
 #### 1.2.5 ssh Settings(sshの設定)
 GitHubとの連携や山口研が保有している仮想マシンへのSSH接続に必要な設定．
-山口研掲示板の'プログラム(個別配布フォルダとGitHubリポジトリ)'より，自分の名前と紐づけられたURLからフォルダへ行き，'key pair'フォルダをダウンロードする．
+
 
 ＊掲示板は年度で切り替わるため固定のURLは記載しない．
 - 'key pair'フォルダをダウンロード後に実行

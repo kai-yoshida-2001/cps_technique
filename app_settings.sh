@@ -2,7 +2,6 @@
 
 # GUIアプリケーションのインストール
 brew install --cask \
-	 google-chrome \
 	 visual-studio-code \
 	 zoom \
 	 vlc \
@@ -31,4 +30,3 @@ brew install \
 
 # Terminalに色を付ける
 mv ./src/dot.zshrc ~/.zshrc
-
