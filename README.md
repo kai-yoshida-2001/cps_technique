@@ -9,7 +9,7 @@
 - Select Your Country or Region(国または地域を選択)
   - Japan -> continue(続ける)
   
-- Text and Voice input Languages(文字入力および音声入力の言語)
+- Written and Spoken Languages(文字入力および音声入力の言語)
   - -> continue(続ける)
   
 - Accessibility(アクセシビリティ)
@@ -22,11 +22,14 @@
 - Data and Privacy(データとプライバシー)
   - -> continue(続ける)
   
-- Transition Assist(移行アシスト)
+- Migration Assistant(移行アシスト)
   - -> Not now(今はしない)
   
-- Sign in with your Apple ID(Apple IDでサインイン)
+- Sign In to Your Apple Account(Apple IDでサインイン)
   - IDとパスワードを使ってサインイン -> continue(続ける)
+  - Apple Accountでログイン済みの端末(iPhoneや別のMacなど)で，ログインを承認するかを問われるので，'Agree'
+  - 全6桁の数値がログイン済の端末に表示されるので，セットアップ中のMac側で入力する
+  - 利用規約に同意する -> 'Agree'
   
   ＊ここで設定しない場合は'later'(あとで設定)
   
@@ -43,21 +46,41 @@
   ＊アカウント名は後から変更できない．
   また，Terminalで表示されるアカウント名が長くなると
   カッコよくない(個人の感想)ので，短く設定しておくと良い．
+
+- iCloud Keychain
+  - Would you like to use iCloud keychain on this Mac?
+	- Use iCloud Keychain
+	- Set up later
 	
+	＊お好みで選択
+	
+- Make This Your New Mac
+  - -> Customize Settings
+
 - Enable location information(位置情報サービスを有効にする)
   - チェックを入れる -> continue(続ける)
   
 - Analysis(解析)
-  - チェックを外す -> continue(続ける)
+  - チェックを全て外す -> continue(続ける)
   
 - Screen Time(スクリーンタイム)
-  - => later(あとで設定)
+  - => Set Up Later(あとで設定)
   
-- Siri
-  - チェックを外す -> continue(続ける)
-  
+- Apple Intelligence
+  - -> Continue
+
+- FileVault Disk Encryption
+  - -> Continue
+
 - Touch ID
   - 指紋認証でログインできるようにする
+  - -> Continue
+  
+- Apple Pay
+  - Set Up Later
+
+- Siri
+  - チェックを外す -> continue(続ける)
   
 - Select Appearance Mode(外観モードを選択)
   - ライトかダークのどちらかを選択 -> continue(続ける)
@@ -106,7 +129,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 		- Keyboard: 全てOFF
 		- Input Sources: Select next source in Input menu をON 
 		＊1.キー操作を'Command'と'i'に設定する
-		＊2.上記に設定する前に'Modifier Keys'の変更をしておくことが望ましい
+		＊2.上記に設定する前に'Modifier Keys'の変更をしておくこと
 		- Screenshots: 上から1つ目と3つ目，5つ目をON
 		- Presenter Overlay: 全てOFF
 		- Services: 全てOFF
@@ -312,7 +335,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 - インストールしたHomebrewのバージョンを確認し，gitをインストールする．
 ~~~
-brew -V
+brew --version
 brew install git
 ~~~
 
