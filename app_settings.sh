@@ -1,32 +1,10 @@
 #!/bin/bash
 
 # GUIアプリケーションのインストール
-brew install --cask \
-	 visual-studio-code \
-	 zoom \
-	 vlc \
-	 mi \
-	 gimp \
-	 windows app \
-	 zoom \
+brew install --cask visual-studio-code zoom vlc mi gimp windows app 
 
 # CLIパッケージのインストール
-brew install \
-	emacs \
-	screen \
-	wget \
-	pwgen \
-	curl \
-	tree \
-	tmux \
-	yt-dlp \
-	ffmpeg \
-	imagemagick \
-	pyenv \
-	docker \
-	ag \
-	ansible \
-	hudochenkov/sshpass/sshpass/sshpass
+brew install screen wget pwgen curl tree tmux yt-dlp ffmpeg imagemagick pyenv ag ansible
 
 # Terminalに色を付ける
 mv ./src/dot.zshrc ~/.zshrc

@@ -336,14 +336,14 @@ eval $(/opt/homebrew/bin/brew shellenv)
 - インストールしたHomebrewのバージョンを確認し，gitをインストールする．
 ~~~
 brew --version
-brew install git google-chrome
+brew install git google-chrome emacs
 ~~~
 
 - Chromeを開き，CPSのアカウントでログインしたのちに山口研の掲示板を開く
 -> 山口研掲示板の'プログラム(個別配布フォルダとGitHubリポジトリ)'より，自分の名前と紐づけられたURLからフォルダへ行き，'key pair'フォルダをダウンロードする．その後，下記のコマンドを実行する．
 ~~~
 # sshの設定
-unzip ~/Downloads/key\ pair-*.zip; mv key\ pair ~/.ssh
+unzip ~/Downloads/key_pair-*.zip; mv key_pair ~/.ssh
 cd; chmod 700 .ssh
 cd .ssh; chmod 600 config; chmod 700 secret; chmod 600 secret/*
 cp ~/.ssh/pub/*@ylab.pub ~/.ssh/authorized_keys
