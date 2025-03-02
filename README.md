@@ -75,7 +75,7 @@
   
   ~~~
   $ sudo apt update
-  $ sudo apt install ssh -y
+  $ sudo apt install -y ssh
   ~~~
 
 # 2.SSH接続
@@ -132,7 +132,38 @@
 ＊MBAから'do_ansible.sh'を実行できない場合は，GPUサーバ同士でやり取りする必要があるため，初めてGPUマシンを設定する際にはすでにSSH接続できる先輩に立ち会ってもらうと良い．
 
 # 3.ソフトウェアのインストール
+- Google Chromeのインストール: 
+  ~~~
+  # パッケージの取得
+  $ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  
+  # インストール
+  $ sudo apt install -y ./google-chrome-stable_current_amd64.deb
+  
+  # 残骸を削除
+  $ rm ./google-chrome-stable_current_amd64.deb 
+  ~~~
+  
+- pyenvのインストール: 
+  ~~~
+  $ sudo apt update
+  $ sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+	  libbz2-dev libreadline-dev libsqlite3-dev curl \
+	  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+	  libffi-dev liblzma-dev
+	  
+  $ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  
+  $ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+  $ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+  $ echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+  $ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+  
+  $ exec $SHELL
+  ~~~
 
 # 4.マジックパケットの設定
 
 # reference
+- Chrome: https://qiita.com/R61/items/2d29158b29c2bc4e95b1
+- pyenv: https://qiita.com/middle_aged_rookie_programmer/items/0eb574e92a52c923e7ec
