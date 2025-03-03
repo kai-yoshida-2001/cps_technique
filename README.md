@@ -7,8 +7,8 @@
 その後，Ubuntu OSが入っているUSBメモリ(部屋長 or 山口先生から拝借)をマシンに差し込み，マシンの電源を入れる．マシンが起動するまで，DELキーを押し続けてBIOS画面を立ち上げる．
 
 ## 1.2 BIOS画面の操作
-- Advanced modeへ移行 => Bootタブを開く => Boot Option Prioritiesの'#1'と'#2'を入れ替える
-．
+- Advanced modeへ移行 => Bootタブを開く => Boot Option Prioritiesの'#1'と'#2'を入れ替える．
+
 ＊1 新規立ち上げの場合，HDDを指定されていることがあるため'USB Flash Disk'を'#1'に指定する．
 
 ＊2 起動時の画面(Advanced modeへ移行せず)で変更するには'Boot Priotrity'の下にある選択肢2つ(ubuntu SATA6G 4: と USB Flash Disk)をドラッグして入れ替えることで変更することが可能．
@@ -70,8 +70,8 @@
   ~~~
   $ ip a
   ~~~
-  => 表示されるeno1番のIPアドレスを確認: (例)172.28.209.3X
-  ＊取得したIPアドレスはすぐに確認できる場所にメモしておく
+  => 表示されるeno1番のIPアドレスを確認: (例)172.28.209.37
+  ＊取得したIPアドレスはすぐに確認できる場所(miなど)にメモしておく
   
   ~~~
   $ sudo apt update
@@ -129,10 +129,10 @@
 上から順に#(コメントアウト)を外して，実行を繰り返す．
 (f_install_packages_for_ubuntu ~ f_print_ssh_configを順番に実行するイメージ)
 
-＊MBAから'do_ansible.sh'を実行できない場合は，GPUサーバ同士でやり取りする必要があるため，初めてGPUマシンを設定する際にはすでにSSH接続できる先輩に立ち会ってもらうと良い．
+＊MBAから'do_ansible.sh'を実行できない場合は，GPUサーバ同士でやり取りする必要があるため，すでにSSH接続できる先輩に立ち会ってもらうと良い．
 
 # 3.ソフトウェアのインストール
-- Google Chromeのインストール: 
+## 3.1 Google Chromeのインストール: 
   ~~~
   # パッケージの取得
   $ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -144,7 +144,29 @@
   $ rm ./google-chrome-stable_current_amd64.deb 
   ~~~
   
-- pyenvのインストール: 
+## 3.2 Gitのアップデートと設定
+部屋長と山口先生が提供している'Ansible'を使えばGitを自動的にインストールしてくれる．しかし，Gitのバージョンによっては一部コマンドが異なる(例えば，Gitのバージョンを確認するためのコマンドが'git --version'なのか'git -v'なのか)ため，個人的には最新版に更新しておくことをオススメする．
+  ~~~
+  $ git --version # 既存のバージョン確認
+  
+  $ sudo add-apt-repository ppa:git-core/ppa
+  $ sudo apt update
+  $ sudo apt upgrade -y
+  
+  $ git -v # バージョンが変わったかを確認
+  ~~~
+  
+  ~~~
+  $ git config --global user.name XXXX
+  $ git config --global user.email XXX.XXXX@cps.akita-pu.ac.jp
+  
+  $ git config --global core.editor 'emacs -nw'
+  $ git config --global init.defaultBranch main
+  
+  $ git config --list
+  ~~~
+  
+## 3.3 pyenvのインストール: 
   ~~~
   $ sudo apt update
   $ sudo apt install -y make build-essential libssl-dev zlib1g-dev \
@@ -166,4 +188,5 @@
 
 # reference
 - Chrome: https://qiita.com/R61/items/2d29158b29c2bc4e95b1
+- Git: https://qiita.com/cointoss1973/items/1c01837e65b937fc0761
 - pyenv: https://qiita.com/middle_aged_rookie_programmer/items/0eb574e92a52c923e7ec
