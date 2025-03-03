@@ -185,6 +185,139 @@
   ~~~
 
 # 4.マジックパケットの設定
+## 4.1 BIOS画面
+GPUサーバの電源を落とす => 電源を入れる&DELキーを押し続けてBIOSを立ち上げる => Advanced Modeへ移動 => Advanced タブを開く => 
+	- NetWork Stack Configuration => 
+		- Network Stack: Enabled ＊変更すると新たに2つの選択肢が出現する
+		- IPv4 PXE Support: Enabled
+	- APM Configuration
+		- Power On By PCI-E: Enabled
+
+=> EzModeへ移動 => Save & Exit => Save Chenges & Reset: OK
+
+## 4.2 必要なパッケージのインストール
+~~~
+$ sudo apt update
+$ sudo apt install -y net-tools ethtool network-manager 
+~~~
+
+## 4.3 インターフェース名とMACアドレスの確認
+~~~
+$ ifconfig
+
+# もしくは
+
+$ ip link show 
+~~~
+
+=> インタフェース名: eno1
+=> MACアドレス: ff:ff:ff:ff:ff:ff
+
+＊ffにはそれぞれ独自の数字とアルファベットが記載される
+
+## 4.4 Wake on Lanの設定確認
+~~~
+$ sudp ethtool eno1 | grep -i wake-on
+~~~
+=> Supports Wake-on: pumbg
+=> Wake-on: g
+となればOK(?)
+
+## 4.5 Wake on Lanの永続化
+### 4.5.1 有線接続名の確認
+~~~
+$ nmcli con show
+~~~
+=> eno1のような名前を含む行の1列目の値が表示されればOK(?)
+=> 何も表示されなかった場合は4.5.2へ進む
+
+### 4.5.2 有線接続名が表示されない場合の対処
+~~~
+$ sudo mv /etc/NetworkManager/conf.d/10-globally-managed-devices/conf \
+/etc/NetworkManager/conf.d/10-glogally-managed-devices.conf_orig
+
+$ sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+$ sudo systemctl restart NetworkManager
+$ sudo nmcli dev set eno1 managed yes
+~~~
+
+~~~
+$ nmcli con show
+~~~
+=> 有線接続名が「eno1」と表示される
+
+＊10-globally-managed-devices/conf がそもそも存在していなかった場合には，2つ目のコマンドから順番に実施すれば良い．
+
+### 4.5.3 Wake on Lanの設定
+~~~
+$ nmcli c show 'eno1' | grep -i wake-on-lan # 
+$ sudo nmcli c modify 'eno1' 802-3-ethernet.wake-on-kan magick
+$ nmcli c show 'eno1' | grep -i wake-on-lan # 
+~~~
+
+### 4.5.4 iptablesの設定(/etc/init.d/my_iptables_on.shを編集)
+~~~
+$ sudo su
+$ cd /etc/init.d/
+$ emacs -nw my_iptables_on.sh
+~~~
+
+~~~
+## Wake on Lan
+iptables -A OUTPUT -p --dport 9 -j ACCEPT
+~~~
+
+- 編集が終わったら
+~~~
+$ ./my_iptables_on.sh
+~~~
+
+# 5.クライアントの設定
+## 5.1 パッケージのインストール
+~~~
+# Ubuntu
+$ sudo apt update && sudo apt install wakeonlan
+
+# macOS
+$ brew install wakeonlan
+~~~
+
+## 5.2 マジックパケットの送信
+手順4.3で取得したMACアドレスを使用する
+~~~
+$ wakeonlan ff:ff:ff:ff:ff:ff
+~~~
+
+## 5.3 サーバへのマジックパケットの到達確認
+~~~
+$ sudo tcpdump proto 0x0842 or udp port 9 -i eno1
+~~~
+=> 出力が確認できればOK(?)
+
+## 解決する問題
+- 手順5.3において，出力が確認できなかった．下記コマンドでは出力が得られたが，マジックパケットを受け取れていないと考えられる．
+  ~~~
+  $ sudo tcpdump -i eno1 port 9 or ether dst ff:ff:ff:ff:ff:ff
+  $ sudo tcpdump -nn -e -i eno1 ether dst ff:ff:ff:ff:ff:ff
+  ~~~
+
+- 確認に必要なコマンドを管理
+~~~
+# Wake on Lanの設定確認
+$ sudo ethtool eno1 | grep -i wake-on
+
+# 有線接続名の確認
+$ nmcli c show
+
+# Wake on Lanの設定確認
+$ nmcli c show 'eno1' | grep -i wake-on-lan
+
+# マジックパケットの確認
+$ wakeonlan 
+
+# マジックパケットの到達確認
+$ sudo tcpdump proto 0x0842 or udp port 9 -i eno1
+~~~
 
 # reference
 - Chrome: https://qiita.com/R61/items/2d29158b29c2bc4e95b1
