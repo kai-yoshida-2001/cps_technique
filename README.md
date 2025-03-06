@@ -167,6 +167,7 @@
   ~~~
   
 ## 3.3 pyenvのインストール: 
+Pythonのバージョンを管理できるツールとして，pyenvをインストールする．
   ~~~
   $ sudo apt update
   $ sudo apt install -y make build-essential libssl-dev zlib1g-dev \
@@ -183,7 +184,124 @@
   
   $ exec $SHELL
   ~~~
+  
+  ~~~
+  $ pyenv -v # pyenvのバージョン確認
+  
+  $ pyenv install --list # インストール可能なPythonのバージョン確認
+  
+  # Pythonの各バージョンをインストール
+  $ pyenv install 3.10.16 
+  $ pyenv install 3.11.11
+  $ pyenv install 3.12.9
+  $ pyenv install 3.13.2
+  
+  # インストールしたバージョンを一覧表示
+  $ pyenv versions
+  ~~~
+  
+  ~~~
+  # OS環境全体(global)で使用できるバージョンを指定
+  $ pyenv global 3.11.11 
+  $ python -V
+  # => Python 3.11.11 どのディレクトリに移動してもこの出力が得られればOK
+  
+  # 作業ディレクトリ内(local)でのみ使用できるバージョンを指定
+  $ cd YOUR_DIRECTORY
+  $ pyenv local 3.12.9
+  $ python -V
+  # => Python 3.12.9 指定したディレクトリ内でのみこの出力が得られればOK
+  ~~~
 
+## 3.4 NVIDIAドライバ & CUDAのインストール: 
+	- GPUサーバに対応したNVIDIAドライバを探す
+	~~~
+	$ ubuntu-drivers devices
+	~~~
+	
+	=> いくつかの'driver'が表示されるが，その中に'recommended'が記載されているバージョンがあるため，そのバージョンの番号をメモしておく
+	
+	
+	- recommendedが書かれたバージョンをインストール
+   ~~~
+   $ sudo add-apt-repository ppa:graphics-drivers/ppa
+   $ sudo apt update && sudo apt install nvidia-driver-5XX
+   ~~~
+   
+   - インストール完了後
+   ~~~
+   # サーバを再起動
+   $ sudo reboot
+   
+   # インストール確認用のコマンド
+   $ watch -n 1 nvidia-smi
+   ~~~
+   
+   => 画面右上に表示されている'CUDA Version'は，GPUに対応している最新のCUDAバージョンを指すが，すでにCUDAがインストールされているわけではないことに注意
+  
+  - CUDAのインストール
+  [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-downloads)から'deb(network)を選択してインストール用コマンドを取得する'
+	  - Operating System: Linux
+	  - Architecture: x86-64
+	  - Distribution: Ubuntu
+	  - Version: 22.04(2025/03/03時点)
+	  - Instller Type: deb(network)
+	  
+	  => 上記項目を選択するとインストールに必要なコマンドが表示されるので，上から順に実行していく
+  
+  - インストール後
+  ~~~
+  # サーバを再起動
+  $ sudo reboot
+  
+  # CUDAのパスを通す
+  $ echo 'export PATH=/usr/local/cuda:/usr/local/cuda/bin:$PATH' >> ~/.bashrc
+  $ echo 'export LD_LIBRARY_PATH=/usr/local/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+  ~~~
+
+   - cuDNNのインストール
+	 - [CUDAとcuDNNの対応表](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)を参考に，自分がインストールしたCUDAのバージョンに対応しているcuDNNのバージョンを確認する．
+	 - [cuDNN](https://developer.nvidia.com/cudnn-archive)から，自分の環境に対応したcuDNNをインストールする．
+	 
+	 - 著者はCUDA Toolkit Version: 12.6をインストールしたので，cuDNN 9.8.0 for CUDA 12.X をインストールした．手順は下記の通りとなる．
+		- Operating System: Linux
+		- Architecture: x86_64
+		- Distribution: Ubuntu
+		- Version: 22.04
+		- Installer Type: deb(Network)
+		
+	=> Base Installerに記載されているコマンドを順番に実行する
+
+   - cuDNNインストール後
+   ~~~
+   $ sudo reboot
+   
+   $ dpkg -l | grep cudnn
+   ~~~
+   => インストールしたバージョンを示す出力が確認できたらOK
+
+   - PyTorch環境の構築
+	 - venvで仮想環境を作り，PyTorchをインストールしてGPUを使用可能か確認する．
+	 ~~~
+	 $ python3 -V # 著者は3.11.11を使用した
+	 
+	 $ cd; mkdir .venv # 該当ディレクトリがなければ
+	 $ cd .venv
+	 $ python3 -m venv torch
+	 $ cd; source .venv/torch/bin/activate
+	 $ pip3 install torch
+	 
+	 $ python3
+	 ~~~
+	 
+	 ~~~
+	 >>> $ import torch
+	 >>> $ print(torch.cuda_is_available())
+	 # => True と出力されればOK
+	 >>> $ print(torch.cuda.get_device_name())
+	 # => NVIDIA GeForce RTX 30X0 と出力されればOK
+	 ~~~
+	 
 # 4.マジックパケットの設定
 ## 4.1 BIOS画面
 GPUサーバの電源を落とす => 電源を入れる&DELキーを押し続けてBIOSを立ち上げる => Advanced Modeへ移動 => Advanced タブを開く => 
@@ -320,6 +438,7 @@ $ sudo tcpdump proto 0x0842 or udp port 9 -i eno1
 ~~~
 
 # reference
-- Chrome: https://qiita.com/R61/items/2d29158b29c2bc4e95b1
-- Git: https://qiita.com/cointoss1973/items/1c01837e65b937fc0761
-- pyenv: https://qiita.com/middle_aged_rookie_programmer/items/0eb574e92a52c923e7ec
+- Chromeのインストール手順: https://qiita.com/R61/items/2d29158b29c2bc4e95b1
+- Gitのインストール手順: https://qiita.com/cointoss1973/items/1c01837e65b937fc0761
+- pyenvのインストール手順: https://qiita.com/middle_aged_rookie_programmer/items/0eb574e92a52c923e7ec
+- NVIDIA Driver & CUDAのインストール手順: https://qiita.com/tf63/items/0c6da72fe749319423b4
