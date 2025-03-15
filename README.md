@@ -1,5 +1,11 @@
-# cps_technique
-## branch:ubuntu_setup
+# Ubuntu_Setup
+
+## 目次
+1. [OSのインストール](#1osのインストール)
+2. [SSH接続の設定](#2ssh接続の設定)
+3. [ソフトウェアのインストール](#3ソフトウェアのインストール)
+4. [マジックパケットの設定](#4マジックパケットの設定)
+5. [USBにUbuntuOSをインストールする](#)
 
 # 1.OSのインストール
 ## 1.1 Ubuntu OSの操作
@@ -7,62 +13,61 @@
 その後，Ubuntu OSが入っているUSBメモリ(部屋長 or 山口先生から拝借)をマシンに差し込み，マシンの電源を入れる．マシンが起動するまで，DELキーを押し続けてBIOS画面を立ち上げる．
 
 ## 1.2 BIOS画面の操作
-- Advanced modeへ移行 => Bootタブを開く => Boot Option Prioritiesの'#1'と'#2'を入れ替える．
-
-＊1 新規立ち上げの場合，HDDを指定されていることがあるため'USB Flash Disk'を'#1'に指定する．
-
+- Advanced modeへ移行 => Bootタブを開く => Boot Option Prioritiesの'#1'と'#2'を入れ替える．<br>
+＊1 新規立ち上げの場合，HDDを指定されていることがあるため'USB Flash Disk'を'#1'に指定する．<br>
 ＊2 起動時の画面(Advanced modeへ移行せず)で変更するには'Boot Priotrity'の下にある選択肢2つ(ubuntu SATA6G 4: と USB Flash Disk)をドラッグして入れ替えることで変更することが可能．
 
-- EzModeへ移行 => Save & Exit => Save Changes & Reset: OK => Try or Install Ubuntu: Enter
-
-＊起動時の画面で変更した場合: Save Changes & Reset: OK => Try or Install Ubuntu: Enter
+- EzModeへ移行 => Save & Exit => Save Changes & Reset: OK<br>=> Try or Install Ubuntu: Enter<br>
+＊起動時の画面で変更した場合: Save Changes & Reset: OK<br>=> Try or Install Ubuntu: Enter
 
 ## 1.3 UI起動後
 - Welcome: 言語はEnglishを選択し，Install Ubuntuをクリックして進む
-- KeyBoard leyout: 
-  => Choose your keyboard layout => English(US)
+- KeyBoard leyout:<br>
+  => Choose your keyboard layout => English(US)<br>
 ＊選択箇所は2つあるが，両方English(US)にする
 
 - Updates and other software
-  - what apps would you like to install to start with?: 
+  - what apps would you like to install to start with?:<br>
 	=> Normal install
-	- Other options: 
+	
+  - Other options: <br>
 	=> Download updates while installing Ubunutu
 	
-- Installation type: 
+- Installation type:<br>
   - This computer currently has Ubuntu 22.04.5 LTS on it. What would you like to do?
-  => Erase disk and install Ubuntu => Install Now
+  
+  => Erase disk and install Ubuntu => Install Now<br>
 ＊新規立ち上げの場合は，デフォルトでチェックが付いている項目を選択
 
 - Where are you?:
-  - Tokyo => Continue
+  - Tokyo<br>
+  => Continue
   
 - Who are you?:
   - Your name: (例)kai
   - Your computer's name: (例)junin
   - Pick username: (例)kai
   - Choose a password: 覚えやすいもの
-  - Confirm your password: 上と同じもの
-  
-  => Require my password to log in => Continue => restart now
+  - Confirm your password: 上と同じもの<br>
+=> Require my password to log in => Continue => restart now
   
 ## 1.4 OSインストール後
-- Please remove the installation medium, then press Enter: 
+- Please remove the installation medium, then press Enter:<br>
   => マシンに刺しているUSBメモリを抜き，Enterキーを押す
 
-- Connect Your Online Accounts: 
+- Connect Your Online Accounts:<br>
   => 何も選択せず'Skip'
   
-- Enable Ubuntu Pro: 
+- Enable Ubuntu Pro:<br>
   => Ubuntu Pro => Skip for now => Next
   
-- Help improve Ubuntu: 
+- Help improve Ubuntu:<br>
   => No, don't send system info => Next
   
-- Privacy: 
+- Privacy:<br>
   => Location Services => OFF => Next
   
-- You're ready to go!: 
+- You're ready to go!:<br>
   => 何も選択せずに'Done'
   
 ## 1.5 マシンのIPアドレスを取得
@@ -70,15 +75,15 @@
   ~~~
   $ ip a
   ~~~
-  => 表示されるeno1番のIPアドレスを確認: (例)172.28.209.37
+
+  => 表示されるeno1番のIPアドレスを確認: (例)172.28.209.37<br>
   ＊取得したIPアドレスはすぐに確認できる場所(miなど)にメモしておく
-  
   ~~~
   $ sudo apt update
   $ sudo apt install -y ssh
   ~~~
 
-# 2.SSH接続
+# 2.SSH接続の設定
 - MBAの画面で操作
 - Chromeを開く => Google Drive => 検索バー: hhost.zip => ダウンロード
 
@@ -87,9 +92,8 @@
   $ brew install ansible sshpass
   $ ssh IP_Address # 手順1.5で取得したIPアドレスを使用
   ~~~
-  => Are you ~ fingerprints?<y/n> => yes
+  => Are you ~ fingerprints?<y/n> => yes<br>
 ＊接続できたら'Cmd + D'で接続を切る
-  
   ~~~
   $ cd ~/.ssh/pub; ls # 自分のMBAをpubkeyを確認
   $ cd ..; cp pub/user_name@ylab.pub ./authorised_keys
@@ -127,8 +131,7 @@
   ~~~
 
 上から順に#(コメントアウト)を外して，実行を繰り返す．
-(f_install_packages_for_ubuntu ~ f_print_ssh_configを順番に実行するイメージ)
-
+(f_install_packages_for_ubuntu ~ f_print_ssh_configを順番に実行するイメージ)<br>
 ＊MBAから'do_ansible.sh'を実行できない場合は，GPUサーバ同士でやり取りする必要があるため，すでにSSH接続できる先輩に立ち会ってもらうと良い．
 
 # 3.ソフトウェアのインストール
@@ -218,9 +221,7 @@ Pythonのバージョンを管理できるツールとして，pyenvをインス
 	~~~
 	$ ubuntu-drivers devices
 	~~~
-	
-	=> いくつかの'driver'が表示されるが，その中に'recommended'が記載されているバージョンがあるため，そのバージョンの番号をメモしておく
-	
+=> いくつかの'driver'が表示されるが，その中に'recommended'が記載されているバージョンがあるため，そのバージョンの番号をメモしておく
 	
 	- recommendedが書かれたバージョンをインストール
    ~~~
@@ -236,8 +237,7 @@ Pythonのバージョンを管理できるツールとして，pyenvをインス
    # インストール確認用のコマンド
    $ watch -n 1 nvidia-smi
    ~~~
-   
-   => 画面右上に表示されている'CUDA Version'は，GPUに対応している最新のCUDAバージョンを指すが，すでにCUDAがインストールされているわけではないことに注意
+=> 画面右上に表示されている'CUDA Version'は，GPUに対応している最新のCUDAバージョンを指すが，すでにCUDAがインストールされているわけではないことに注意
   
   - CUDAのインストール
   [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-downloads)から'deb(network)を選択してインストール用コマンドを取得する'
@@ -304,13 +304,12 @@ Pythonのバージョンを管理できるツールとして，pyenvをインス
 	 
 # 4.マジックパケットの設定
 ## 4.1 BIOS画面
-GPUサーバの電源を落とす => 電源を入れる&DELキーを押し続けてBIOSを立ち上げる => Advanced Modeへ移動 => Advanced タブを開く => 
-	- NetWork Stack Configuration => 
-		- Network Stack: Enabled ＊変更すると新たに2つの選択肢が出現する
-		- IPv4 PXE Support: Enabled
+GPUサーバの電源を落とす => 電源を入れる&DELキーを押し続けてBIOSを立ち上げる => Advanced Modeへ移動 => Advanced タブを開く =><br>
+	- NetWork Stack Configuration =>
+		- Network Stack: Enabled <br>＊変更すると新たに2つの選択肢が出現する
+		- IPv4 PXE Support: Enabled<br>
 	- APM Configuration
-		- Power On By PCI-E: Enabled
-
+		- Power On By PCI-E: Enabled<br>
 => EzModeへ移動 => Save & Exit => Save Chenges & Reset: OK
 
 ## 4.2 必要なパッケージのインストール
@@ -327,8 +326,7 @@ $ ifconfig
 
 $ ip link show 
 ~~~
-
-=> インタフェース名: eno1
+=> インタフェース名: eno1<br>
 => MACアドレス: ff:ff:ff:ff:ff:ff
 
 ＊ffにはそれぞれ独自の数字とアルファベットが記載される
@@ -337,7 +335,7 @@ $ ip link show
 ~~~
 $ sudp ethtool eno1 | grep -i wake-on
 ~~~
-=> Supports Wake-on: pumbg
+=> Supports Wake-on: pumbg<br>
 => Wake-on: g
 となればOK(?)
 
@@ -346,7 +344,7 @@ $ sudp ethtool eno1 | grep -i wake-on
 ~~~
 $ nmcli con show
 ~~~
-=> eno1のような名前を含む行の1列目の値が表示されればOK(?)
+=> eno1のような名前を含む行の1列目の値が表示されればOK(?)<br>
 => 何も表示されなかった場合は4.5.2へ進む
 
 ### 4.5.2 有線接続名が表示されない場合の対処
@@ -369,7 +367,10 @@ $ nmcli con show
 ### 4.5.3 Wake on Lanの設定
 ~~~
 $ nmcli c show 'eno1' | grep -i wake-on-lan # 
-$ sudo nmcli c modify 'eno1' 802-3-ethernet.wake-on-kan magick
+	# もし，Error: eno1 - no such connection profile.となった場合
+	$ sudo nmcli c add type ethernet ifname eno1 con-name eno1
+	
+$ sudo nmcli c modify "eno1" 802-3-ethernet.wake-on-lan magic
 $ nmcli c show 'eno1' | grep -i wake-on-lan # 
 ~~~
 
