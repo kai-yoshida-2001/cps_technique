@@ -92,10 +92,6 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 
 ＊記録時点での最新OSは，macOS Sequoia Version 15.3
 
-
-<img width='470' src='./src/macos_version.png' alt='macOS Sequoia Version 15.3'>
-
-
 #### 1.2.1 System Setting(システム環境設定)
 画面左上のバナーにあるAppleマーク -> Syetem Settings...
 - Trackpad Settings(トラックパッドの設定)
