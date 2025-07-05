@@ -1,8 +1,8 @@
 # cps_technique
 ## branch:mac_setup
 
-## 1.CPS流のMBAセットアップ手順
-### 1.1初回起動時の設定
+# 1.CPS流のMBAセットアップ手順
+## 1.1初回起動時の設定
 - Language(言語)
   - English -> continue
   
@@ -17,7 +17,7 @@
   
 - Select Wi-Fi Network(Wi-Fiネットワークを選択)
   - SSID:mse_common
-  - PW:m29-c0mm0n -> continue(続ける)
+  - PW:XXX-XXXXX -> continue(続ける)
   
 - Data and Privacy(データとプライバシー)
   - -> continue(続ける)
@@ -86,13 +86,13 @@
   - ライトかダークのどちらかを選択 -> continue(続ける)
   ＊おすすめはダーク．．．
   
-### 1.2各ソフトウェアの設定
+## 1.2各ソフトウェアの設定
 起動後の画面と現役のCPSメンバーが使用しているMBAの画面は大きく異なる．
 System Settings(システム環境設定)のUIにも大きくことなっているため，一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．なお，アップデートにはそれなりの時間がかかる．
 
 ＊記録時点での最新OSは，macOS Sequoia Version 15.3
 
-#### 1.2.1 System Setting(システム環境設定)
+### 1.2.1 System Setting(システム環境設定)
 画面左上のバナーにあるAppleマーク -> Syetem Settings...
 - Trackpad Settings(トラックパッドの設定)
   - Search -> Trackpad -> Point & Click -> ON or OFF の設定部分は全てON
@@ -106,8 +106,8 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
   - Trackpad -> More & Gestures -> ON or OFF の設定部分は全てON
 	- Swipe between pages: Swipe with Two or Three Fingers
 	- Swipe between full-screen applications: Swipe Left or Right with Four Fingers
-	- Mission Control: Swipe Up with Fingers
-	- App Expose: Swipe Down with Three Fingers
+	- Mission Control: Swipe Up with Three Fingers
+	- App Expose: OFF
 
 - Keyboard Settings(キーボードの設定)
   - Search -> Keyboard
@@ -122,6 +122,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 		- Launchpad & Dock: 全てOFF
 		- Display: 全てOFF
 		- Mission Control: 全てOFF
+		- Windows: 全てOFF 
 		- Keyboard: 全てOFF
 		- Input Sources: Select next source in Input menu をON 
 		＊1.キー操作を'Command'と'i'に設定する
@@ -141,9 +142,10 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 			- Command key: Controlに変更
 			- Globe key: Globeのまま
 	- Text Input: Input Sources -> Edit...
-		- 画面下に表示される'+'をクリックし，'Japanese - Romaji'を選択して追加
+		- 画面左下に表示される'+'をクリックし，
+		'Japanese - Romaji'を選択して追加
 		- 追加された'Japanese'を選択
-			- Input models: 'Hiragana'以外をOFF
+			- Input models: 'Hiragana'だけをON(それ以外をOFF)
 			- Caps Lock action: Caps Lock
 			- Shift key action: Enter Romaji mode
 			- Live Conversion: OFF
@@ -192,7 +194,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 
 - Dock Settings(Dockの設定)
   - Search -> Dock -> Desktop & Dock
-  - Size -> 'Small'寄りに約10％くらいの大きさ
+  - Size -> 'Small'寄りに10 ~ 15％くらいの大きさ
   - Magnification -> OFF
   - Position on screen -> Left
   - Minimize windows using -> Genie Effect
@@ -220,7 +222,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 	- Prefer tabs when opening documents -> In Full Screen
 	- Ask to keep changes when closing documents -> ON
 	- Close windows when quitting an application -> ON
-	- Drag windows to screen to screen edges to file -> ON
+	- Drag windows to screen to screen edges to file -> OFF
 	- Drag windows to menu bar to fill screen -> OFF
 	- Hold Option key while dragging windows to file -> OFF
 	- Tiled windows have margins -> ON
@@ -228,7 +230,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
   - Mission Control:
 	- Automatically rearrange Spaces bassed on most recent use -> ON
 	- When switching to an application, switch to a Space with open windows for the application -> ON
-	- Group windows by application -> ON
+	- Group windows by application -> OFF
 	- Displays have separate Spaces -> ON
 	- Drag windows to top of screen to enter Mission Control -> OFF
 
@@ -266,7 +268,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 	- Automatically hide and show the menu bar: Never
 	- Recent documents, applications, and servers: 10
 
-#### 1.2.2 Terminal Settings(Terminalの設定)
+### 1.2.2 Terminal Settings(Terminalの設定)
 - Terminal.appを起動
   - 画面左上のバナーに表示されている'Terminal'(Appleマークの右隣)をクリック -> Settings... -> General
 	- On startup, open: New Window with profile にチェック -> Pro を選択
@@ -313,7 +315,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 	- Finder -> Applications -> Utilities -> Terminal.appを2本指でタップ -> Gey Info -> 
 		- Open using Rosetta -> OFF
 
-#### 1.2.3 [Homebrew](https://brew.sh/)をインストール
+### 1.2.3 [Homebrew](https://brew.sh/)をインストール
 LaunchpadかFinder内のApplications -> Utilities -> Terminalを起動して，下記のコマンドを入力する．この際，DockにTerminalを追加しておくとよい．
 - Launchpad -> Other -> Terminal
 - Finder -> Applications -> Utilities -> Terminal
@@ -329,7 +331,8 @@ echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
 eval $(/opt/homebrew/bin/brew shellenv)
 ~~~
 
-- インストールしたHomebrewのバージョンを確認し，gitをインストールする．
+- インストールしたHomebrewのバージョンを確認し，
+git，Chrome，emacsをインストールする．
 ~~~
 brew --version
 brew install git google-chrome emacs
@@ -350,22 +353,21 @@ cp ~/.ssh/pub/*@ylab.pub ~/.ssh/authorized_keys
 ＊CPSのアカウントでGoogle Driveへアクセスして，検索バーで'hhost.zip'を入力し，
 該当ファイルをダウンロードしておくこと
 ~~~
-git clone github:kai-yoshida-2001/cps_technique.git
+cd; git clone github:kaimorgn/cps_technique.git
 cd cps_technique
 git checkout mac_setup
-./app_install.sh
 ~~~
 
 - screenの設定
 ~~~
 brew info screen # バージョン確認
-alias screen='/usr/local/Cellar/screen/5.0.0/bin/screen' >> ~/.zshrc
+alias screen='/usr/local/Cellar/screen/5.0.1/bin/screen' >> ~/.zshrc
 ~~~
-＊5.0.0は'screen'のバージョンを示しており，インストールのタイミング次第では
+＊5.0.1は'screen'のバージョンを示しており，インストールのタイミング次第では
 上記コマンド表記では正常に動作しない可能性がある．
-なお，ver.5.0.0は2024/08/28にリリースされており，本リポジトリ制作のタイミング（2025/02/13）時点の最新版である．
+なお，ver.5.0.1は2025/07/05時点の最新版である．
 
-#### 1.2.3 Finder Settings(Finderの設定)
+### 1.2.3 Finder Settings(Finderの設定)
 - Finder.appを起動
   - 画面左上のバナーに表示されている'Finder'(Appleマークの右隣)をクリック -> Settings... -> General
 	- Show these items on the desktop: -> External disks のみチェック
@@ -377,9 +379,9 @@ alias screen='/usr/local/Cellar/screen/5.0.0/bin/screen' >> ~/.zshrc
 	
 	＊頻繁にUSBメモリやSDカード等を使う場合には'Location'の中にある'External disks'にもチェックを入れておくと良い
 
-#### 1.2.4 mi Settings(miの設定)
+### 1.2.4 mi Settings(miの設定)
 - mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
-  - 画面左上のバナーに表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
+  - 画面左上のバナー(リンゴマークの右隣)に表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
   - Ruler and Line Number:
 	- Ruler -> Display Ruler: OFF
 	- Line Number -> Display Each Line Number -> OFF 
@@ -388,38 +390,34 @@ alias screen='/usr/local/Cellar/screen/5.0.0/bin/screen' >> ~/.zshrc
 	 - Normal Font -> Select...
 		 - Font: Monaco, Size: 16pt
 
-#### 1.2.5 ssh Settings(sshの設定)
+### 1.2.5 SSH Settings(sshの設定)
 GitHubとの連携や山口研が保有している仮想マシンへのSSH接続に必要な設定．
 
 
 ＊掲示板は年度で切り替わるため固定のURLは記載しない．
-- 'key pair'フォルダをダウンロード後に実行
-~~~
-./ssh_settings.sh
-~~~
 
-- Gitの設定
-  - git_settings.shの編集
-  ~~~
-  emacs -nw git_settings.sh
-  ~~~
+- Shellファイルの編集
+~~~
+emacs -nw setup.sh
+~~~
   - 下記部分を編集
   ~~~
-  # 編集必要
-  git config --global user.name NAME # GitHubに登録したユーザ名に変更
-  git config --global user.email XXX.XXXX@cps.akita-pu.ac.jp # CPSメールアドレスの名前と苗字を設定
+  name='UserName@MachineName' # MBAに設定したユーザ名とマシン名
+  mail='XXX.XXXX@cps.akita-pu.ac.jp' # 配属確定後に案内されたCPSアカウント
   ~~~
   - 編集例：
   ~~~
-  # 編集必要
-  git config --global user.name kai-yoshida-2001 # GitHubに登録したユーザ名に変更
-  git config --global user.email kai.yoshida@cps.akita-pu.ac.jp # CPSメールアドレスの名前と苗字を設定
+  name='kai@morgan' # kai: ユーザ名，morgan: マシン名
+  mail='kai.yoshida@cps.akita-pu.ac.jp' # 快のCPSアカウント
   ~~~
 
 - 上記設定が完了後，shellファイルを実行する．
 ~~~
-./git_settings.sh
+./setup.sh
 ~~~
+=> 実行すると，Terminalへ色を付ける設定が記述された設定ファイル".zshrc"を
+配置したり，GUI/CLIアプリのインストール，pyenvやscreen，Gitの一部設定が
+完了する．
 
 - GitHubにpubキーを設定
 ~~~
@@ -430,8 +428,26 @@ pbcopy < .ssh/pub/*@ylab.pub
 	- title: ylab
 	- key type: 変更なし
 	- key: クリップボードで保持している内容を貼り付け -> Add SSH key
+	
+#### 1.2.6 Emacsの設定
+デフォルト設定のままでは，編集画面が見づらい上にキーバインドが異なっている．
+そこで，山口先生が作成したEmacsの設定フォルダを配置することで，
+扱いやすい設定を反映する．<br>
+まず，CPSアカウントでChromeにログインしてGoogle Driveを開く．
+次に，検索バーへ"M2.吉田快"と入力し，該当のフォルダを探す．
+その後，M2.吉田快 -> マニュアル関連 -> MBAセットアップ まで進み，
+dot.emacs.dフォルダがあることを確認する．
+そして，dot.emacs.dフォルダをダウンロードする．
+ダウンロードが終わったら，下記のコマンドを実行する．
+~~~
+cd Downloads/
+unzip dot.emacs.d-*.zip
+cd; rm -rf .emacs.d
+mv ~/Downloads/dot.emacs.d ~/.emacs.d
+~~~
+=> 上記手順を実行することで，設定がEmacsの設定が反映される．
 
-#### 1.2.6 Microsoft Office(必要であれば)
+### 1.2.7 Microsoft Office(必要であれば)
 - CPS用のGoogleアカウントでDriveへログインし，検索バーで'Microsoft Office'と入力する．
 - 検索結果の'Microsoft Office'フォルダをクリック
 - フォルダ内にある4つのファイルを全てダウンロードする
@@ -441,18 +457,131 @@ pbcopy < .ssh/pub/*@ylab.pub
   - ＊この際，いくつかのステップで'Agree'を選択する必要がある
 - Wordの初回起動時に行った動作をExcel，PowerPointでも同様に実施する
 
-#### 1.2.7 特定のAppにおいて日本語表記を適用する
+### 1.2.8 特定のAppにおいて日本語表記を適用する
 - 画面左上にあるAppleマークから'System Settings'をクリック
 - System Settings -> General -> Language & Region -> Applications -> '+'マークをクリック -> ApplcationとLanguageをそれぞれ選択 -> Add
   - ここでApplicationをWord，Languageを日本語 - Japaneseに設定することで，次回起動時から日本語表記が適用される
-  - 使用頻度が多いWord，Excel，PowerPoint，VScodeは上記設定をしておくと良いかも...
+  - 使用頻度が多いWord，Excel，PowerPoint，VScodeは上記設定をしておくと良い
+
+## 1.3 Windows AppとSSHの練習
+### 1.3.1 Windows Appの練習
+仮想マシンの画面をMBA側で表示・操作できるようにするためのソフトウェア．
+仮想マシンのIPアドレスやユーザ名，パスワード等を設定することで，
+仮想マシンの画面をMBA側で操作できるようになる．<br>
+今回は山口先生の講義(Python プログラミング2や社会科学データ分析)で
+使用される"mse vm"系マシンへ接続する手順を解説する．
+
+- 学籍番号のメールアドレスでChromeを開き，Google Driveを開く
+  - 検索バーへ"msevm.txt"と入力して，テキストファイルのビューを開く
+  - ファイル内に記載されているIPアドレスやユーザ名，パスワードを控えておく
+- Launchpad -> Windows App へ進み，アプリを起動
+  - 画面右上にある"+"ボタンをクリックして，"Add PC"を選択する
+  - PC name: 先ほど控えたIPアドレスを入力
+  - Credentials: -> Ask when required -> Add User Account ... 
+	- Username: 先ほど控えたユーザ名を入力
+	- Password: 先ほど控えたパスワードを入力 
+	＊すでにパスワードを変更している場合は，変更済みのパスワードを入力
+	- Friendly name: 直感的にわかりやすい名前にするとよい
+		- おすすめの例: m26d003@mse07vm23 # ユーザ名@マシン名で登録
+	- => Add
+  - Edit PCの画面に戻ったら，Friendly name:を入力する．こちらでは，マシン名で登録すると良い(例: mse07vm23)
+  - Displayタブへ移動
+	- Color quality: Medium(16 bit)へ変更
+	- Save
+
+=> 初回接続時はあれこれ聞かれるが，
+ContinueやAgreeといった承認するボタンを選択して良い．
+
+接続に成功して画面が表示されたら，
+Terminalを開いて下記のコマンドを入力・実行する．
+~~~
+ip -4 addr show | grep -oP '\b\d{3}\.\d{2}\.\d{2,3}\.\d{2,3}\b' | grep -v '^127\.' | head -n 1
+~~~
+=> このとき，SSH接続に必要なIPアドレスが出力されるため，
+出力されたアドレスを控えておく．
+
+### 1.3.2 SSHの練習
+MBAのTerminalを使って仮想マシンのTerminalを操作する方法を解説する．
+今回は，Windos Appの練習時に取得したIPアドレスを使って，
+仮想マシンにSSH接続する．
+- Dock -> Terminalを起動
+  - はじめに，IPアドレスを指定してSSH接続する
+  ~~~
+  ssh USER_NAME@IP_ADDRESS
+  ~~~
+  => 接続時にyes/noを求められるので，yesと入力 -> Enter<br>
+  => 無事に接続できるとユーザ名やマシン名の内容が変わり，
+  テキストの色も緑色に変化している．
+  これが確認できたら下記のコマンドを入力してEnter．
+  ~~~
+  exit
+  ~~~
   
-#### 1.2.8 Windows Appの設定
-仮想マシンの画面をMBA側で表示・操作できるようにするためのソフトウェア
+  - 次に，SSH接続を簡略化するための設定をおこなう
+  まずは，下記のコマンドを入力・実行し，公開鍵を配置する
+  ~~~
+  scp ~/.ssh/authorized_keys USERNAME@IP_ADDRESS:.ssh/
+  ~~~
+  - USER_NAME: ユーザ名(学籍番号)
+  - IP_ADDRESS: Windows App練習時に取得したIPアドレス
 
-ここでは仮想マシンのIPアドレスやユーザ名，パスワード等を設定する
+  - 下記コマンドを実行して該当ファイルを編集
+  ~~~
+  emacs -nw .ssh/config
+  ~~~
+  - 下記項目を追記
+  ~~~
+  Host MACHINE_NAME
+    Hostname IP_ADDRESS
+	User USER_NAME
+	Port 22
+	LoaclForward XXXXX 127.0.0:3389
+	ProxyCommand ssh -W %h:%p abert
+  ~~~
+  - MACHINE_NAME: mse_vm系で貸し与えられているマシンの名前
+  - IP_ADDRESS: Windows App練習時に取得したIPアドレス
+  - USER_NAME: ユーザ名(学籍番号)
+  - XXXXX: 好きな番号5桁(詳しく解説しないが，この5桁は後々重要なので控えておく)
+  - => 上記項目を適切に編集できたら，保存して編集モードから抜ける
+  - 編集モードから抜けたら，実際にSSH接続できるか確認する
+  ~~~
+  ssh MACHINE_NAME
+  ~~~
+  => 無事に接続できるとユーザ名やマシン名の内容が変わり，
+  テキストの色も緑色に変化している．
+  これが確認できたら下記のコマンドを入力してEnter．
+  ~~~
+  exit
+  ~~~
+  
+### 1.3.3 Windows AppとSSH接続の練習
+Windows AppとSSH接続を組み合わせることで，
+学外からも仮想マシンを画面上で操作できるようになる．
+- Windows Appを起動
+  - 画面右上にある"+"ボタンをクリックして，"Add PC"を選択する
+  - PC name: localhost:XXXXX # XXXXXは先ほど控えておいた任意の数字5桁
+  - Credentials: -> Ask when required -> Add User Account ... 
+	- ユーザ名とパスワードは先ほど設定したものを使う(選択候補に出てくる)
+  - => Add
+  
+  - Edit PCの画面に戻ったら，Friendly name:を入力するが，
+  先ほどと同じにしてしまうとパッと見で違いがわからないため，
+  先に設定したものと差別化できる名前を設定する
+  (例: mse07vm23 via SSH)
+  - Displayタブへ移動
+	- Color quality: Medium(16 bit)へ変更
+	- Save
 
-XXXX：後ほど追記
+- Terminalを起動
+  - 仮想マシンへアクセス
+  ~~~
+  ssh MACHINE_NAME
+  ~~~
+
+- Windows Appで直前に設定したPCへ接続(・・・ -> connect) -> Agree
+  - 接続できたらOK．
+  - MBAのWi-Fi設定を開き，mse_commonからスマホのキャリア通信に切り替えて
+  接続できるか試しておくこと．
 
 ### reference
 - https://docs.google.com/document/d/1643S_JMsHVVNLv68HBaF3Goanjzwg_A301Sueou6FA4/edit?usp=drive_link

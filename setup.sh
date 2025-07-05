@@ -36,6 +36,11 @@ f_install_homebrew() {
 	eval $(/opt/homebrew/bin/brew shellenv)
 }
 
+f_color_in_terminal() {
+	mv ./src/dot.zshrc ~/.zshrc
+	source ~/.zshrc
+}
+
 f_install_gui_apps() {
 	for gui_app in "${gui_apps[@]}"; do
 		echo brew install --cask "$gui_app"
@@ -70,7 +75,7 @@ f_setting_git() {
 }
 
 f_setting_screen() {
-	echo "alias screen='/usr/local/Cellar/screen/5.*/bin/screen'" >> ~/.zshrc
+	echo "alias screen='/usr/local/Cellar/screen/5.0.1/bin/screen'" >> ~/.zshrc
 }
 
 f_setting_ssh() {
@@ -80,16 +85,15 @@ f_setting_ssh() {
 	cd .ssh/; chmod 600 config; chmod 700 secret; chmod 600 secret/*
 	cp ~/.ssh/pub/*@ylab.pub ~/.ssh/authorized_keys
 }
-# Terminalに色を付ける
-#mv ./src/dot.zshrc ~/.zshrc
 
-##
+####
+f_color_in_terminal
 f_install_gui_apps
 f_install_cli_apps
 
-##
+####
 #f_install_homebrew
-#f_setting_pyenv
-#f_setting_git
-#f_setting_screen
+f_setting_pyenv
+f_setting_git
+f_setting_screen
 #f_setting_ssh
