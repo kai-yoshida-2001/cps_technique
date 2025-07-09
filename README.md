@@ -17,7 +17,7 @@
   
 - Select Wi-Fi Network(Wi-Fiネットワークを選択)
   - SSID:mse_common
-  - PW:XXX-XXXXX -> continue(続ける)
+  - PW:m29-c0mm0n -> continue(続ける)
   
 - Data and Privacy(データとプライバシー)
   - -> continue(続ける)
@@ -447,6 +447,58 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
 ~~~
 => 上記手順を実行することで，設定がEmacsの設定が反映される．
 
+### 1.2.7 D404小型プリンターとG2-621大型プリンターの設定
+- D404小型プリンター
+	- 画面上部メニューバーの左側にあるAppleマークをクリック -> 
+	System Settings ... -> 
+	サイドバー下部までスクロールして Printers & Scanners をクリック ->
+	Add Printer, Scanner, or Fax...をクリック -> 
+	Add Printerウィンドウが立ち上がり，Default タブが開かれる ->
+	Name欄に表示された Brother DCP-J987N をクリックして下記を設定
+		- Name: Brother DCP-J987N
+		- Location: D404
+		- Use: 何も記入しない<br>
+	=> 無事に追加できたら適当なファイルを印刷したり，
+	紙をスキャンしたりして一通りの操作を体験する
+	
+	- G2-621大型プリンター
+	[Fujifilmのサイト](https://www.fujifilm.com/fb/download/apeos/c6580)から
+	Apeos 6580用のドライバをインストールする．<br>
+	Apeos C6580 -> Mac OS をクリック -> macOS Sequoia(日本語環境) を選択する．
+	＊自身のOS環境に応じて適切なドライバを選択する(OSは常に最新版であると良い)
+	
+	Mac OS X用プリンタードライバーをクリック -> ダウンロードが見えるまで
+	スクロール -> 使用許諾条件に同意しダウンロード<br>
+	
+	Finder を起動 -> Downloads -> ffmacprnstd*.dmg をクリック -> 
+	インストール用のウィンドウが立ち上がる -> 
+	Fuji Xerox Print Driver for Mac OS X Installer.pkg を両クリック -> 
+	Open -> Continue -> Continue -> Agree -> 
+	(Install for all users of this computer を選択して) Continue -> Install ->
+	(インストールが完了したら) Close -> Move to trash -> 
+	インストール用のウィンドウを閉じる -> デスクトップにある
+	「Fuji Xerox Print Driver for Mac OS X Installer.pkg」を両クリック ->
+	Eject "Fuji Xerox Print Driver for Mac OS X Installer"<br>
+	
+	画面上部メニューバーの左側にあるAppleマークをクリック -> 
+	System Settings ... -> 
+	サイドバー下部までスクロールして Printers & Scanners をクリック ->
+	Add Printer, Scanner, or Fax...をクリック -> 
+	Add Printerウィンドウが立ち上がり，Default タブが開かれる ->
+	IP(地球儀マーク)をクリック -> 下記項目を入力
+		- Address: 172.24.48.189
+		- Protocol: LPD(Line Printer Daemon)
+		- Name: Apeos 6580@G2-621
+		- Location: G2-621
+		- Use: （Select Softwareをクリックして）
+		FX Print Driver for Mac OS X v1.6 または 
+		FF Print Driver for Mac OS X v2.2（を選択してOKをクリック）<br>
+		=> Add
+		- Minimum Passcode Length: 0
+		- Customize User Prompts: Display User ID and Account ID Prompts
+		- Specify Paper size with Print Job Ticket: Off<br>
+	=> 試しに何か印刷してみる
+
 ### 1.2.7 Microsoft Office(必要であれば)
 - CPS用のGoogleアカウントでDriveへログインし，検索バーで'Microsoft Office'と入力する．
 - 検索結果の'Microsoft Office'フォルダをクリック
@@ -582,6 +634,21 @@ Windows AppとSSH接続を組み合わせることで，
   - 接続できたらOK．
   - MBAのWi-Fi設定を開き，mse_commonからスマホのキャリア通信に切り替えて
   接続できるか試しておくこと．
+  
+### Other...
+本リポジトリには"os_update.sh"ある．
+このファイルの該当箇所1点を適切に編集して保存しておけば，
+Shellファイル実行時にHomebrewでインストールしたパッケージと
+OS最新版の検索・アップデートを一括でおこなえる．編集該当箇所は下記の通り．
+~~~
+install_update() {
+	echo "Now installing..."
+	echo "XXXX" | sudo -S softwareupdate -ia -R
+}
+~~~
+=> XXXXの部分を編集する．
+具体的には，MBAセットアップに設定したのパスワード記載しておく．
+(CPSアカウントのパスワードではないので注意)
 
 ### reference
 - https://docs.google.com/document/d/1643S_JMsHVVNLv68HBaF3Goanjzwg_A301Sueou6FA4/edit?usp=drive_link
@@ -590,4 +657,4 @@ Windows AppとSSH接続を組み合わせることで，
 
 
 ### 最終更新日
-2025/02/04(火) 11:55
+2025/07/09(水) 16:00
