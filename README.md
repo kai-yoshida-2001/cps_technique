@@ -635,8 +635,46 @@ Windows AppとSSH接続を組み合わせることで，
   - MBAのWi-Fi設定を開き，mse_commonからスマホのキャリア通信に切り替えて
   接続できるか試しておくこと．
   
+## 1.4 仮想マシンでAIを動かす
+### 1.4.1 yolo v5を動かす
+~~~
+ssh MACHINE_NAME
+cd venv; python3 -m venv yolov5_env
+source yolov5_env/bin/activate
+cd; git clone https://github.com/ultralytics/yolov5
+cd yolov5/
+pip install -r requirements.txt
+ls data/images/
+python detect.py --source data/images/bus.jpg --conf 0.5 --weights yolov5s.pt
+ls runs/detect/exp/
+~~~
+=> Results saved to runs/detect/exp<br>
+"runs/detect/exp"の中に"bus.jpg"が入っていれば"yolov5"を実行成功．
+
+### 1.4.2 自分の顔写真を画像認識する
+山口研HPにあるメンバーの顔写真をダウンロードする
+(自分がすでに追加されている場合は，自分の顔写真で試す)．
+
+[山口研究室](https://www.cps.akita-pu.ac.jp) -> About -> members -> 
+自分の項目をクリックして写真部分を両クリック -> Save Image As... -> 
+ファイル名を"download.jpg"でダウンロード 
+-> 下記コマンドを使って写真ファイルを仮想マシンへ複製
+~~~
+scp ~/Downloads/download.jpg MACHINE_NAME:yolov5/data/
+~~~
+
+仮想マシンへ複製後，下記コマンドを使って"yolov5"を実行する．
+~~~
+ssh MACHINE_NAME
+cd yolov5/
+python detect.py --source data/images/download.jpg --conf 0.5 --weights yolov5s.pt
+~~~
+=> Results saved to runs/detect/exp<br>
+"runs/detect/exp"の中に"download.jpg"が入っていれば，
+自分が用意した画像で"yolov5"を実行成功．
+
 ### Other...
-本リポジトリには"os_update.sh"ある．
+本リポジトリには"os_update.sh"がある．
 このファイルの該当箇所1点を適切に編集して保存しておけば，
 Shellファイル実行時にHomebrewでインストールしたパッケージと
 OS最新版の検索・アップデートを一括でおこなえる．編集該当箇所は下記の通り．
@@ -657,4 +695,4 @@ install_update() {
 
 
 ### 最終更新日
-2025/07/09(水) 16:00
+2025/07/10(水) 01:30
