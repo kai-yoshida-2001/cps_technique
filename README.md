@@ -516,7 +516,11 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
   - 使用頻度が多いWord，Excel，PowerPoint，VScodeは上記設定をしておくと良い
 
 ## 1.3 Windows AppとSSHの練習
+＊各セメスターごとにマシンがリセットされるようなので，
+もしかすると当日(2025/08/07)は接続できてもその後使えなくなるかも．
+
 ### 1.3.1 Windows Appの練習
+- 公開鍵を取得して承認鍵へ複写する
 仮想マシンの画面をMBA側で表示・操作できるようにするためのソフトウェア．
 仮想マシンのIPアドレスやユーザ名，パスワード等を設定することで，
 仮想マシンの画面をMBA側で操作できるようになる．<br>
@@ -544,13 +548,21 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
 => 初回接続時はあれこれ聞かれるが，
 ContinueやAgreeといった承認するボタンを選択して良い．
 
-接続に成功して画面が表示されたら，
+仮想マシンへ接続後，仮想マシン内でChromeを開いてCPSアカウントでログインする．
+ログイン後，山口研掲示板を開いて自身のkey_pairが配置されたGoogle Driveのフォルダへ移動する．移動したら"pub => NAME@ylab.pub"とファイルのみを選択してダウンロードする．
+
+ダウンロードが完了したらTerminalを開いて，既存のauthorized_keysへ自身の公開鍵を複写する．
+~~~
+$ cat ~/Downloads/*.pub >> .ssh/authorized_keys
+~~~
+
+- 仮想マシンのIPアドレスを取得する
 Terminalを開いて下記のコマンドを入力・実行する．
 ~~~
 ip -4 addr show | grep -oP '\b\d{3}\.\d{2}\.\d{2,3}\.\d{2,3}\b' | grep -v '^127\.' | head -n 1
 ~~~
-=> このとき，SSH接続に必要なIPアドレスが出力されるため，
-出力されたアドレスを控えておく．
+=> SSH接続に必要なIPアドレスが出力されるため，
+出力されたアドレスをメモしておく．
 
 ### 1.3.2 SSHの練習
 MBAのTerminalを使って仮想マシンのTerminalを操作する方法を解説する．
@@ -569,15 +581,7 @@ MBAのTerminalを使って仮想マシンのTerminalを操作する方法を解�
   exit
   ~~~
   
-  - 次に，SSH接続を簡略化するための設定をおこなう
-  まずは，下記のコマンドを入力・実行し，公開鍵を配置する
-  ~~~
-  scp ~/.ssh/authorized_keys USERNAME@IP_ADDRESS:.ssh/
-  ~~~
-  - USER_NAME: ユーザ名(学籍番号)
-  - IP_ADDRESS: Windows App練習時に取得したIPアドレス
-
-  - 下記コマンドを実行して該当ファイルを編集
+  - 次に，下記コマンドを実行して該当ファイルを編集
   ~~~
   emacs -nw .ssh/config
   ~~~
@@ -695,4 +699,4 @@ install_update() {
 
 
 ### 最終更新日
-2025/07/10(水) 01:30
+2025/07/29(火) 11:10
