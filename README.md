@@ -1,8 +1,33 @@
-# cps_technique
-## branch:mac_setup
+<div id="top"></div>
 
-# 1.CPS流のMBAセットアップ手順
-## 1.1初回起動時の設定
+## サマリー
+<!-- リポジトリの概要を示す -->
+<!-- 開発に着手した背景/リポジトリの目的/結論 -->
+<p>
+ <img src="https://img.shields.io/badge/macOS-000000?logo=macos&logoColor=white" alt="macOS"/>
+ <img src="https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white" alt="GitHub"/>
+</p>
+
+従来のMac Book Air(MBA)セットアップ手順は最新のmacOSバージョンへの対応が不十分であり，
+手順書の一部と一致しない項目が多くなった．
+加えて，Terminal上での各種コマンド操作の意味がわからないまま，コピペして実行をしてしまう学生も多く，
+誤った設定や不要なエラーの原因となるケースも増えた．
+そこで，視覚的にわかりやすく，かつ情報の更新や共有が容易であるGitHubのリポジトリを用いて
+セットアップの手順を管理する．
+このリポジトリでは，研究室に配属した学生が1人でセットアップができることを目指し，簡潔な手順書の整備を進める．
+
+## 目次
+1. [初回起動時の設定](#1初回起動時の設定)
+2. [各ソフトウェアの設定](#2各ソフトウェアの設定)
+3. [Windows AppとSSHの練習](#3WindowsAppとSSHの練習)
+4. [仮想マシンでAIを動かす](#4仮想マシンでAIを動かす)
+5. [その他](#5その他)
+6. [参考資料](#6参考資料)
+
+## リポジトリ名
+cps_technique
+
+## 1.初回起動時の設定
 - Language(言語)
   - English -> continue
   
@@ -52,7 +77,7 @@
 	- Use iCloud Keychain
 	- Set up later
 	
-	＊お好みで選択
+	＊ここで設定しない場合は'set up later'
 	
 - Make This Your New Mac
   - -> Customize Settings
@@ -86,13 +111,17 @@
   - ライトかダークのどちらかを選択 -> continue(続ける)
   ＊おすすめはダーク．．．
   
-## 1.2各ソフトウェアの設定
+<p align="right"><a href="#top">トップへ</a></p>
+
+## 2.各ソフトウェアの設定
 起動後の画面と現役のCPSメンバーが使用しているMBAの画面は大きく異なる．
-System Settings(システム環境設定)のUIにも大きくことなっているため，一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．なお，アップデートにはそれなりの時間がかかる．
+System Settings(システム環境設定)のUIにも大きくことなっているため，
+一度OSを最新版にアップデートしてUIを共通の状態にすることを推奨する．<br>
+なお，アップデートにはそれなりの時間がかかる．
 
-＊記録時点での最新OSは，macOS Sequoia Version 15.3
+＊記録時点での最新OSは，macOS Sequoia Version 15.6
 
-### 1.2.1 System Setting(システム環境設定)
+### 2.1 System Setting(システム環境設定)
 画面左上のバナーにあるAppleマーク -> Syetem Settings...
 - Trackpad Settings(トラックパッドの設定)
   - Search -> Trackpad -> Point & Click -> ON or OFF の設定部分は全てON
@@ -268,7 +297,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 	- Automatically hide and show the menu bar: Never
 	- Recent documents, applications, and servers: 10
 
-### 1.2.2 Terminal Settings(Terminalの設定)
+### 2.2 Terminal Settings(Terminalの設定)
 - Terminal.appを起動
   - 画面左上のバナーに表示されている'Terminal'(Appleマークの右隣)をクリック -> Settings... -> General
 	- On startup, open: New Window with profile にチェック -> Pro を選択
@@ -315,7 +344,7 @@ System Settings(システム環境設定)のUIにも大きくことなってい�
 	- Finder -> Applications -> Utilities -> Terminal.appを2本指でタップ -> Gey Info -> 
 		- Open using Rosetta -> OFF
 
-### 1.2.3 [Homebrew](https://brew.sh/)をインストール
+### 2.3 [Homebrew](https://brew.sh/)をインストール
 LaunchpadかFinder内のApplications -> Utilities -> Terminalを起動して，下記のコマンドを入力する．この際，DockにTerminalを追加しておくとよい．
 - Launchpad -> Other -> Terminal
 - Finder -> Applications -> Utilities -> Terminal
@@ -358,16 +387,7 @@ cd cps_technique
 git checkout mac_setup
 ~~~
 
-- screenの設定
-~~~
-brew info screen # バージョン確認
-alias screen='/usr/local/Cellar/screen/5.0.1/bin/screen' >> ~/.zshrc
-~~~
-＊5.0.1は'screen'のバージョンを示しており，インストールのタイミング次第では
-上記コマンド表記では正常に動作しない可能性がある．
-なお，ver.5.0.1は2025/07/05時点の最新版である．
-
-### 1.2.3 Finder Settings(Finderの設定)
+### 2.4 Finder Settings(Finderの設定)
 - Finder.appを起動
   - 画面左上のバナーに表示されている'Finder'(Appleマークの右隣)をクリック -> Settings... -> General
 	- Show these items on the desktop: -> External disks のみチェック
@@ -379,7 +399,7 @@ alias screen='/usr/local/Cellar/screen/5.0.1/bin/screen' >> ~/.zshrc
 	
 	＊頻繁にUSBメモリやSDカード等を使う場合には'Location'の中にある'External disks'にもチェックを入れておくと良い
 
-### 1.2.4 mi Settings(miの設定)
+### 2.4 mi Settings(miの設定)
 - mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
   - 画面左上のバナー(リンゴマークの右隣)に表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
   - Ruler and Line Number:
@@ -390,13 +410,12 @@ alias screen='/usr/local/Cellar/screen/5.0.1/bin/screen' >> ~/.zshrc
 	 - Normal Font -> Select...
 		 - Font: Monaco, Size: 16pt
 
-### 1.2.5 SSH Settings(sshの設定)
+### 2.5 SSH Settings(sshの設定)
 GitHubとの連携や山口研が保有している仮想マシンへのSSH接続に必要な設定．
-
 
 ＊掲示板は年度で切り替わるため固定のURLは記載しない．
 
-- Shellファイルの編集
+- Shellスクリプトの編集
 ~~~
 emacs -nw setup.sh
 ~~~
@@ -429,7 +448,7 @@ pbcopy < .ssh/pub/*@ylab.pub
 	- key type: 変更なし
 	- key: クリップボードで保持している内容を貼り付け -> Add SSH key
 	
-#### 1.2.6 Emacsの設定
+### 2.6 Emacsの設定
 デフォルト設定のままでは，編集画面が見づらい上にキーバインドが異なっている．
 そこで，山口先生が作成したEmacsの設定フォルダを配置することで，
 扱いやすい設定を反映する．<br>
@@ -447,7 +466,7 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
 ~~~
 => 上記手順を実行することで，設定がEmacsの設定が反映される．
 
-### 1.2.7 D404小型プリンターとG2-621大型プリンターの設定
+### 2.6 D404小型プリンターとG2-621大型プリンターの設定
 - D404小型プリンター
 	- 画面上部メニューバーの左側にあるAppleマークをクリック -> 
 	System Settings ... -> 
@@ -499,7 +518,7 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
 		- Specify Paper size with Print Job Ticket: Off<br>
 	=> 試しに何か印刷してみる
 
-### 1.2.7 Microsoft Office(必要であれば)
+### 2.7 Microsoft Office(必要であれば)
 - CPS用のGoogleアカウントでDriveへログインし，検索バーで'Microsoft Office'と入力する．
 - 検索結果の'Microsoft Office'フォルダをクリック
 - フォルダ内にある4つのファイルを全てダウンロードする
@@ -509,17 +528,19 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
   - ＊この際，いくつかのステップで'Agree'を選択する必要がある
 - Wordの初回起動時に行った動作をExcel，PowerPointでも同様に実施する
 
-### 1.2.8 特定のAppにおいて日本語表記を適用する
+### 2.8 特定のAppにおいて日本語表記を適用する
 - 画面左上にあるAppleマークから'System Settings'をクリック
 - System Settings -> General -> Language & Region -> Applications -> '+'マークをクリック -> ApplcationとLanguageをそれぞれ選択 -> Add
   - ここでApplicationをWord，Languageを日本語 - Japaneseに設定することで，次回起動時から日本語表記が適用される
   - 使用頻度が多いWord，Excel，PowerPoint，VScodeは上記設定をしておくと良い
 
-## 1.3 Windows AppとSSHの練習
+<p align="right"><a href="#top">トップへ</a></p>
+
+## 3.Windows AppとSSHの練習
 ＊各セメスターごとにマシンがリセットされるようなので，
 もしかすると当日(2025/08/07)は接続できてもその後使えなくなるかも．
 
-### 1.3.1 Windows Appの練習
+### 3.1 Windows Appの練習
 - 公開鍵を取得して承認鍵へ複写する
 仮想マシンの画面をMBA側で表示・操作できるようにするためのソフトウェア．
 仮想マシンのIPアドレスやユーザ名，パスワード等を設定することで，
@@ -564,7 +585,7 @@ ip -4 addr show | grep -oP '\b\d{3}\.\d{2}\.\d{2,3}\.\d{2,3}\b' | grep -v '^127\
 => SSH接続に必要なIPアドレスが出力されるため，
 出力されたアドレスをメモしておく．
 
-### 1.3.2 SSHの練習
+### 3.2 SSHの練習
 MBAのTerminalを使って仮想マシンのTerminalを操作する方法を解説する．
 今回は，Windos Appの練習時に取得したIPアドレスを使って，
 仮想マシンにSSH接続する．
@@ -610,7 +631,7 @@ MBAのTerminalを使って仮想マシンのTerminalを操作する方法を解�
   exit
   ~~~
   
-### 1.3.3 Windows AppとSSH接続の練習
+### 3.3 Windows AppとSSH接続の練習
 Windows AppとSSH接続を組み合わせることで，
 学外からも仮想マシンを画面上で操作できるようになる．
 - Windows Appを起動
@@ -638,9 +659,12 @@ Windows AppとSSH接続を組み合わせることで，
   - 接続できたらOK．
   - MBAのWi-Fi設定を開き，mse_commonからスマホのキャリア通信に切り替えて
   接続できるか試しておくこと．
+＊帰宅後，自宅Wi-Fiで試すも可
+
+<p align="right"><a href="#top">トップへ</a></p>
   
-## 1.4 仮想マシンでAIを動かす
-### 1.4.1 yolo v5を動かす
+## 4.仮想マシンでAIを動かす
+### 4.1 yolo v5を動かす
 ~~~
 ssh MACHINE_NAME
 cd venv; python3 -m venv yolov5_env
@@ -655,7 +679,7 @@ ls runs/detect/exp/
 => Results saved to runs/detect/exp<br>
 "runs/detect/exp"の中に"bus.jpg"が入っていれば"yolov5"を実行成功．
 
-### 1.4.2 自分の顔写真を画像認識する
+### 4.2 自分の顔写真を画像認識する
 山口研HPにあるメンバーの顔写真をダウンロードする
 (自分がすでに追加されている場合は，自分の顔写真で試す)．
 
@@ -677,11 +701,13 @@ python detect.py --source data/images/download.jpg --conf 0.5 --weights yolov5s.
 "runs/detect/exp"の中に"download.jpg"が入っていれば，
 自分が用意した画像で"yolov5"を実行成功．
 
-### Other...
-本リポジトリには"os_update.sh"がある．
+<p align="right"><a href="#top">トップへ</a></p>
+
+## 5.その他
+本リポジトリには"os_update.sh"が配置されている．
 このファイルの該当箇所1点を適切に編集して保存しておけば，
-Shellファイル実行時にHomebrewでインストールしたパッケージと
-OS最新版の検索・アップデートを一括でおこなえる．編集該当箇所は下記の通り．
+Shellスクリプト実行時にHomebrewでインストールしたパッケージのアップデートと
+最新版OSの検索＆アップデートを一括でおこなえる．編集該当箇所は下記の通り．
 ~~~
 install_update() {
 	echo "Now installing..."
@@ -692,11 +718,14 @@ install_update() {
 具体的には，MBAセットアップに設定したのパスワード記載しておく．
 (CPSアカウントのパスワードではないので注意)
 
-### reference
+<p align="right"><a href="#top">トップへ</a></p>
+
+## 6.参考資料
 - https://docs.google.com/document/d/1643S_JMsHVVNLv68HBaF3Goanjzwg_A301Sueou6FA4/edit?usp=drive_link
 - https://github.com/tomo-cps/mac-setup
 - https://qiita.com/yu_uk/items/73654985fb1caeab4cec
 
+<p align="right"><a href="#top">トップへ</a></p>
 
-### 最終更新日
-2025/07/29(火) 11:10
+## 最終更新日
+2025/08/04(月) 13:30
