@@ -518,7 +518,42 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
 		- Specify Paper size with Print Job Ticket: Off<br>
 	=> 試しに何か印刷してみる
 
-### 2.7 Microsoft Office(必要であれば)
+### 2.7 Visual Studio Code
+- VScodeのダウンロード
+	- [公式サイト](https://code.visualstudio.com/download)から，macOS対応のパッケージが保存されたZIPファイルをダウンロードする．
+	- ダウンロードしたZIPファイルを解凍し，VScodeのパッケージをアプリケーションフォルダへ移動する．
+	~~~
+	# ZIPファイルの解凍
+	cd ~/Downloads/
+	unzip VSCode-*.zip
+	
+	# VScodeの配置を変更
+	mv Visual\ Studio\ Code.app ~/Applications/
+	rm -f Visual\ Studio\ Code.app
+	rm -f VSCode-*.zip
+	~~~
+	＊Dockにも追加することで，アプリを呼び出しやすくすると良い
+
+- VScodeの設定
+	- 下記の拡張機能をインストールすると，VScodeが使いやすくなる．
+	- Japanese Language Pack for Visual Studio Code: アプリ内の表記を日本語に変更
+	- vscode-icons: 特定のファイルタイプや技術に対応した包括的で識別しやすいアイコンセットに置き換え
+	- Python: VScodeでPython開発をするうえで基盤となる拡張機能(PylanceとPython Debuggerが自動でインストールされる)
+	- Python Enviroments: 有効化している仮想環境を検出・管理する
+	- Pylance: 直前で定義した変数などを呼び出す際に自動補完する
+	- Python Debugger: 変数の監視やデバックコンソールでの式評価などのでバックエンドを担う
+	- Error Lens: 問題がある行全体をハイライトすることで，エラーや警告，その他の言語診断情報の視認性を向上させる
+	- Remote - SSH: SSH接続可能なマシンを検出・接続し，リモートマシン内にあるフォルダやファイルを開いて編集することが可能
+	- Remote - SSH: Editiong Configration Files;
+	- Remote Repositories: GitHub上のリポジトリの閲覧と編集を可能にする
+	- Rainbow CSV: ファイル内の各列を異なる色で表示することで，大規模データセットの可読性を向上させる
+
+ 
+ 	＊一部拡張機能は，1つの拡張機能をインストールした際に自動でインストールされる．
+
+
+
+### 2.8 Microsoft Office(必要であれば)
 - CPS用のGoogleアカウントでDriveへログインし，検索バーで'Microsoft Office'と入力する．
 - 検索結果の'Microsoft Office'フォルダをクリック
 - フォルダ内にある4つのファイルを全てダウンロードする
@@ -528,7 +563,7 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
   - ＊この際，いくつかのステップで'Agree'を選択する必要がある
 - Wordの初回起動時に行った動作をExcel，PowerPointでも同様に実施する
 
-### 2.8 特定のAppにおいて日本語表記を適用する
+### 2.9 特定のAppにおいて日本語表記を適用する
 - 画面左上にあるAppleマークから'System Settings'をクリック
 - System Settings -> General -> Language & Region -> Applications -> '+'マークをクリック -> ApplcationとLanguageをそれぞれ選択 -> Add
   - ここでApplicationをWord，Languageを日本語 - Japaneseに設定することで，次回起動時から日本語表記が適用される
