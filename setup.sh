@@ -43,13 +43,13 @@ f_color_in_terminal() {
 
 f_install_gui_apps() {
 	for gui_app in "${gui_apps[@]}"; do
-		echo brew install --cask "$gui_app"
+		brew install --cask "$gui_app"
 	done
 }
 
 f_install_cli_apps() {
 	for cli_app in "${cli_apps[@]}"; do
-		echo brew install "$cli_app"
+		brew install "$cli_app"
 	done
 }
 
