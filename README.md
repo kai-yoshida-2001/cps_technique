@@ -371,7 +371,7 @@ brew install git google-chrome emacs
 -> 山口研掲示板の'プログラム(個別配布フォルダとGitHubリポジトリ)'より，自分の名前と紐づけられたURLからフォルダへ行き，'key pair'フォルダをダウンロードする．その後，下記のコマンドを実行する．
 ~~~
 # sshの設定
-cd; unzip ~/Downloads/key_pair-*.zip; cd Downloads/
+cd; unzip ~/Downloads/key_pair-*.zip
 mv key_pair ~/.ssh
 cd; chmod 700 .ssh
 cd .ssh; chmod 600 config; chmod 700 secret; chmod 600 secret/*
@@ -382,7 +382,7 @@ cp ~/.ssh/pub/*@ylab.pub ~/.ssh/authorized_keys
 ＊CPSのアカウントでGoogle Driveへアクセスして，検索バーで'hhost.zip'を入力し，
 該当ファイルをダウンロードしておくこと
 ~~~
-cd; git clone github:kaimorgn/cps_technique.git
+cd; git clone https://github.com/kaimorgn/cps_technique.git
 cd cps_technique
 git checkout mac_setup
 ~~~
@@ -401,12 +401,12 @@ git checkout mac_setup
 
 ### 2.4 mi Settings(miの設定)
 - mi.appを起動してDockに追加(Launchpadからドラッグ&ドロップで可能)
-  - 画面左上のバナー(リンゴマークの右隣)に表示されている'mi'をクリック -> Mode Preferences -> Normal -> Display
+  - 画面左上のバナー(リンゴマークの右隣)に表示されている'mi'をクリック -> Mode Settings -> Normal -> Display
   - Ruler and Line Number:
 	- Ruler -> Display Ruler: OFF
 	- Line Number -> Display Each Line Number -> OFF 
 	
-  -  画面左上のバナーに表示されている'mi'をクリック -> Application Preference -> General
+  -  画面左上のバナーに表示されている'mi'をクリック -> Application Settings -> General
 	 - Normal Font -> Select...
 		 - Font: Monaco, Size: 16pt
 
@@ -447,7 +447,12 @@ pbcopy < .ssh/pub/*@ylab.pub
 	- title: ylab
 	- key type: 変更なし
 	- key: クリップボードで保持している内容を貼り付け -> Add SSH key
-	
+~~~
+ssh -T github
+~~~
+=> Hi UserName! You've successfully authenticated, but GitHub does not provide shell access.<br>
+と表示されればOK．
+
 ### 2.6 Emacsの設定
 デフォルト設定のままでは，編集画面が見づらい上にキーバインドが異なっている．
 そこで，山口先生が作成したEmacsの設定フォルダを配置することで，
@@ -550,8 +555,6 @@ mv ~/Downloads/dot.emacs.d ~/.emacs.d
 
  
  	＊一部拡張機能は，1つの拡張機能をインストールした際に自動でインストールされる．
-
-
 
 ### 2.8 Microsoft Office(必要であれば)
 - CPS用のGoogleアカウントでDriveへログインし，検索バーで'Microsoft Office'と入力する．
