@@ -31,7 +31,7 @@ cli_apps=(
 )
 
 f_install_homebrew() {
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
 	eval $(/opt/homebrew/bin/brew shellenv)
 }
@@ -58,7 +58,6 @@ f_setting_pyenv() {
 	echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 	echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 	echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
-	echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
 	source ~/.zshrc
 
@@ -92,7 +91,7 @@ f_install_gui_apps
 f_install_cli_apps
 
 ####
-#f_install_homebrew
+f_install_homebrew
 f_setting_pyenv
 f_setting_git
 f_setting_screen
